@@ -1,12 +1,16 @@
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 
-public class Inventario {
+public class Inventario{
 	
 	private HashTable<String, Carro> inventario; //almacena la llave como string (modelo) y el valor es un objeto de tipo carro
 	private int totalCarros; //almacenar número de carros en almacén, sin importar modelo
@@ -28,21 +32,21 @@ public class Inventario {
 	public void almacenarDatos() { //crea archivo.dat que almacena todos los datos
 		int j;
 		FileOutputStream fs;
+		ObjectOutputStream os;
 		try {
 			fs = new FileOutputStream("Database.bin");
+			os = new ObjectOutputStream(fs);
 			for (int i = 0; i < this.inventario.getTabla().length; i++) {
 				j = 0;
 				if (inventario.getTabla()[i].size() > 0) {
 					for (int l = 0; l < inventario.getTabla()[i].size(); l++) {
 						Carro car = inventario.getTabla()[i].getEn(j).valor;
 						j++;
-						String data = car.getMarca() + "," + car.getModelo() + "," + car.getPrecio() + "," + car.getColor() + "," + car.getYear() + "," + car.getSize();
-						byte[] b = data.getBytes();
-						fs.write(b);
-						fs.flush();
+						os.writeObject(car);
 					}
 				}
 			}
+			os.close();
 			fs.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -53,21 +57,27 @@ public class Inventario {
 	
 	
 	public void loadDatabase(File database) {
-		BufferedReader in;
-		if (database != null) {
-			try {
-				in = new BufferedReader(new FileReader(database));
-				String linea = in.readLine();
-				while(linea != null){
-					linea = in.readLine();
-				}
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+		try {
+			FileInputStream fs = new FileInputStream(database);
+			ObjectInputStream os = new ObjectInputStream(fs);
+			ListaEnlazada<Carro> al = new ListaEnlazada<Carro>();
+			while(fs.available() > 0) {
+				Object objeto = os.readObject();
+				Carro car = (Carro) objeto;
+				al.insertarFin(car);
 			}
+			for (int i = 0; i < al.size(); i++) {
+				System.out.println(al.getEn(i).getPrecio());
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -87,14 +97,17 @@ public class Inventario {
 	
 	public static void main(String [] args) {
 		Inventario a = new Inventario();
-		Carro a2 = new Carro(120000, "Verde", "Grand Cherokee", "Small", 1990, "Toyota");
+		Carro a2 = new Carro(150000, "Verde", "Grand Cherokee", "Small", 1990, "Toyota");
 		Carro a3 = new Carro(20000, "Rojo", "Cherokee", "Medium", 2000, "Toyota");
 		Carro a4 = new Carro(120000, "Verde", "Grand Cherokee", "Big", 1990, "Toyota");
+		Carro a5 = new Carro(300000, "Negro", "Z5", "Small", 2016, "BMW");
 		a.adquirir(a2);
 		a.adquirir(a3);
 		a.adquirir(a4);
+		a.adquirir(a5);
 		a.almacenarDatos();
-		//a.test();
+		File database = new File("Database.bin");
+		a.loadDatabase(database);
 	}	
 }
 

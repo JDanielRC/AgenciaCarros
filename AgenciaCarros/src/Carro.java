@@ -1,11 +1,11 @@
+import java.io.Serializable;
 
-public class Carro {
-	
-	private double precio;
+public class Carro implements Serializable {
+
 	private String color, modelo, size, marca;
-	private int year;
+	private int year, precio;
 	
-	public Carro(double precio, String color, String modelo, String size, int year, String marca) {
+	public Carro(int precio, String color, String modelo, String size, int year, String marca) {
 		this.precio = precio;
 		this.color = color;
 		this.modelo = modelo;
@@ -18,7 +18,7 @@ public class Carro {
 		return precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 
