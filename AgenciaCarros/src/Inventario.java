@@ -1,10 +1,7 @@
-import java.io.BufferedReader;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -69,6 +66,7 @@ public class Inventario{
 			for (int i = 0; i < al.size(); i++) {
 				System.out.println(al.getEn(i).getPrecio());
 			}
+			os.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,6 +77,7 @@ public class Inventario{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 	
@@ -101,10 +100,12 @@ public class Inventario{
 		Carro a3 = new Carro(20000, "Rojo", "Cherokee", "Medium", 2000, "Toyota");
 		Carro a4 = new Carro(120000, "Verde", "Grand Cherokee", "Big", 1990, "Toyota");
 		Carro a5 = new Carro(300000, "Negro", "Z5", "Small", 2016, "BMW");
+		Carro a6 = new Carro(3000000, "Negro", "Divo", "Medium", 2018, "Bugatti");
 		a.adquirir(a2);
 		a.adquirir(a3);
 		a.adquirir(a4);
 		a.adquirir(a5);
+		a.adquirir(a6);
 		a.almacenarDatos();
 		File database = new File("Database.bin");
 		a.loadDatabase(database);
