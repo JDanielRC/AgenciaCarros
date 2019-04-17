@@ -7,7 +7,7 @@ public class ListaEmpleados {
 	
 	public ListaEmpleados() {
 		this.size = 0;
-		this.cantidadGerentes = -1; //-1 para que la primera matricula de gerente sea A000
+		this.cantidadGerentes = 0;
 		this.listaEmpleados = new HashTable<String, Empleado>();
 	}
 

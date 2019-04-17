@@ -27,7 +27,7 @@ public class Empleado {
 	public String generaMatricula(ListaEmpleados lista) {
 		if (this.cargo.equals("Gerente")) {
 			if (lista.getCantidadGerentes() < 10) {
-				String matricula = "A00" + (lista.getCantidadGerentes() + 1);
+				String matricula = "A00" + (lista.getCantidadGerentes());
 				this.matricula = matricula;
 				return matricula;
 			} else {
