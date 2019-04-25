@@ -5,7 +5,7 @@ public class Carro implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1278727701768916994L;
 	private String color, modelo, size, marca;
 	private int year, precio;
 	

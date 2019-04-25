@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 
 public class Inventario{
 	
+
 	private HashTable<String, Carro> inventario; //almacena la llave como string (modelo) y el valor es un objeto de tipo carro
 	private int totalCarros; //almacenar número de carros en almacén, sin importar modelo
 	
@@ -52,6 +53,20 @@ public class Inventario{
 		
 	}
 	
+	public Carro[] listaCarros() {
+		Carro[] lista = new Carro[this.totalCarros];
+		int pos = 0;
+		for (int i = 0; i < this.inventario.getTabla().length; i++) {
+			if (this.inventario.getTabla()[i].size() > 0) {
+				for (int j = 0; j < this.inventario.getTabla()[i].size(); j++) {
+					Carro carro = this.inventario.getTabla()[i].getEn(j).valor;
+					lista[pos] = carro;
+					pos++;
+				}
+			}
+		}
+		return lista;
+	}
 	
 	public void loadDatabase(File database) {
 		try {
@@ -107,8 +122,10 @@ public class Inventario{
 		a.adquirir(a5);
 		a.adquirir(a6);
 		a.almacenarDatos();
-		File database = new File("Database.bin");
-		a.loadDatabase(database);
+		Carro[] lista = a.listaCarros();
+		for (int i = 0; i < lista.length; i++) {
+			System.out.println(lista[i].getPrecio());
+		}
 	}	
 }
 
