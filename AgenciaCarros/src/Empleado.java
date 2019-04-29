@@ -1,7 +1,9 @@
 import java.awt.Image;
+import java.io.Serializable;
 
-public class Empleado {
+public class Empleado implements Serializable {
 
+	private static final long serialVersionUID = -5811292851613865772L;
 	private String primerNombre,
 				   segundoNombre,
 				   apellidoPaterno,
@@ -90,6 +92,18 @@ public class Empleado {
 
 	public void setFoto(Image foto) {
 		this.foto = foto;
+	}
+
+	public Image getFoto() {
+		return foto;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	
 	

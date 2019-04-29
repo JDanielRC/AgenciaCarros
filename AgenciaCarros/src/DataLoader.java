@@ -1,8 +1,10 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class DataLoader {
 	
@@ -56,5 +58,33 @@ public class DataLoader {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static void createEmptyEmployeesFile() {
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("EmployeeDatabase.bin");
+			os = new ObjectOutputStream(fs);
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createEmptyInventoryFile() {
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("CarDatabase.bin");
+			os = new ObjectOutputStream(fs);
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 }

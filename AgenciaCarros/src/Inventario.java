@@ -1,9 +1,5 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
@@ -32,7 +28,7 @@ public class Inventario{
 		FileOutputStream fs;
 		ObjectOutputStream os;
 		try {
-			fs = new FileOutputStream("Database.bin");
+			fs = new FileOutputStream("CarDatabase.bin");
 			os = new ObjectOutputStream(fs);
 			for (int i = 0; i < this.inventario.getTabla().length; i++) {
 				j = 0;
@@ -67,36 +63,8 @@ public class Inventario{
 		}
 		return lista;
 	}
-	
-	public void loadDatabase(File database) {
-		try {
-			FileInputStream fs = new FileInputStream(database);
-			ObjectInputStream os = new ObjectInputStream(fs);
-			ListaEnlazada<Carro> al = new ListaEnlazada<Carro>();
-			while(fs.available() > 0) {
-				Object objeto = os.readObject();
-				Carro car = (Carro) objeto;
-				al.insertarFin(car);
-			}
-			for (int i = 0; i < al.size(); i++) {
-				System.out.println(al.getEn(i).getPrecio());
-			}
-			os.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 
-	
-	
+
 	public int getTotalCarros() {
 		return totalCarros;
 	}
@@ -110,22 +78,25 @@ public class Inventario{
 	}
 	
 	public static void main(String [] args) {
-		Inventario a = new Inventario();
+		/*Inventario a = new Inventario();
 		Carro a2 = new Carro(150000, "Verde", "Grand Cherokee", "Small", 1990, "Toyota");
 		Carro a3 = new Carro(20000, "Rojo", "Cherokee", "Medium", 2000, "Toyota");
 		Carro a4 = new Carro(120000, "Verde", "Grand Cherokee", "Big", 1990, "Toyota");
 		Carro a5 = new Carro(300000, "Negro", "Z5", "Small", 2016, "BMW");
 		Carro a6 = new Carro(3000000, "Negro", "Divo", "Medium", 2018, "Bugatti");
+		Carro a7 = new Carro(900000, "Negro", "Divo", "Medium", 2018, "Bugatti");
 		a.adquirir(a2);
 		a.adquirir(a3);
 		a.adquirir(a4);
 		a.adquirir(a5);
 		a.adquirir(a6);
+		a.adquirir(a7);
 		a.almacenarDatos();
 		Carro[] lista = a.listaCarros();
 		for (int i = 0; i < lista.length; i++) {
 			System.out.println(lista[i].getPrecio());
 		}
+		*/
 	}	
 }
 

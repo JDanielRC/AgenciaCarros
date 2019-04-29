@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class ListaEmpleados {
 	
@@ -55,16 +58,41 @@ public class ListaEmpleados {
 		return this.listaEmpleados.get(matricula);
 	}
 	
+	public void almacenarEmpleados() { //crea archivo.dat que almacena todos los datos
+		int j;
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("EmployeeDatabase.bin");
+			os = new ObjectOutputStream(fs);
+			for (int i = 0; i < this.listaEmpleados.getTabla().length; i++) {
+				j = 0;
+				if (this.listaEmpleados.getTabla()[i].size() > 0) {
+					for (int l = 0; l < this.listaEmpleados.getTabla()[i].size(); l++) {
+						Empleado employee = this.listaEmpleados.getTabla()[i].getEn(j).valor;
+						j++;
+						os.writeObject(employee);
+					}
+				}
+			}
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		ListaEmpleados lista = new ListaEmpleados();
+		/*ListaEmpleados lista = new ListaEmpleados();
 		Empleado pedrito = new Empleado("Pedro", "Díaz", "Pérez", "PDP19374", "Empleado");
 		Empleado alfredito = new Empleado("Alfredo", "Martínez", "López", "AML09857", "Empleado");
 		Empleado hugo = new Empleado("Hugo", "Masharelli", "Rocha", "HMR12455", "Gerente");
 		lista.contratar(pedrito);
-		System.out.println(pedrito.getMatricula());
 		lista.contratar(alfredito);
-		System.out.println(alfredito.getMatricula());
 		lista.contratar(hugo);
-		System.out.println(hugo.getMatricula());
+		lista.almacenarEmpleados();
+		*/
 	}
 }
