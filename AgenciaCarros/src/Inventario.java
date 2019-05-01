@@ -7,7 +7,7 @@ public class Inventario{
 	
 
 	private HashTable<String, Carro> inventario; //almacena la llave como string (modelo) y el valor es un objeto de tipo carro
-	private int totalCarros; //almacenar número de carros en almacén, sin importar modelo
+	private int totalCarros; //almacenar nï¿½mero de carros en almacï¿½n, sin importar modelo
 	
 	public Inventario() { //constructor default, crea un inventario desde cero
 		this.inventario = new HashTable<String, Carro>();
@@ -63,6 +63,25 @@ public class Inventario{
 		}
 		return lista;
 	}
+        
+        public Carro[] listaCarrosPorModelo(String modelo) {
+            Carro[] lista = new Carro[this.totalCarros];;
+		for (int i = 0; i < this.inventario.getTabla().length; i++) {
+                    if(this.inventario.getTabla()[i].size() > 0) {
+			if (this.inventario.getTabla()[i].getEn(0).getValor().getModelo().equals(modelo)) {
+                                lista = new Carro[this.inventario.getTabla()[i].size()];
+				for (int j = 0; j < this.inventario.getTabla()[i].size(); j++) {
+					Carro carro = this.inventario.getTabla()[i].getEn(j).valor;
+					lista[j] = carro;
+				}
+			}
+                    }
+		}
+            System.out.println("Cantidad de autos con ese modelo encontrados: " + lista.length);
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------------");
+            return lista;
+	}
 
 
 	public int getTotalCarros() {
@@ -72,6 +91,10 @@ public class Inventario{
 	public Carro find(String modelo) {
 		return this.inventario.get(modelo);
 	}
+        
+        public boolean containsModelo(String modelo) {
+            return this.inventario.containsKey(modelo);
+        }
 	
 	public double obtainPrice(String modelo) {
 		return this.inventario.get(modelo).getPrecio();

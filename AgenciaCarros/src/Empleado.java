@@ -5,12 +5,13 @@ public class Empleado implements Serializable {
 
 	private static final long serialVersionUID = -5811292851613865772L;
 	private String primerNombre,
-				   segundoNombre,
-				   apellidoPaterno,
-				   apellidoMaterno,
-				   matricula,
-				   cargo,
-				   rfc;
+                       segundoNombre,
+                       apellidoPaterno,
+                       apellidoMaterno,
+                       matricula,
+                       contrasena,
+                       cargo,
+                       rfc;
 	private Image foto;
 	
 	public Empleado(String primerNombre, String apellidoPaterno, String apellidoMaterno, String rfc, String cargo) {
@@ -21,6 +22,7 @@ public class Empleado implements Serializable {
 		this.cargo = cargo;
 		this.foto = null;
 		this.matricula = null;
+                this.contrasena = "";
 		this.cargo = cargo;
 		this.segundoNombre = null;
 	}
@@ -33,14 +35,28 @@ public class Empleado implements Serializable {
 				this.matricula = matricula;
 				return matricula;
 			} else {
-				throw new IndexOutOfBoundsException("No puede existir un número mayor a 10 gerentes");
+				throw new IndexOutOfBoundsException("No puede existir un nï¿½mero mayor a 10 gerentes");
 			}
 		} else {
 			String matricula = "A0" + (lista.getSize() + 10);
 			this.matricula = matricula;
 			return matricula;
 		}
-	}
+	}      
+        
+        public String generaContrasena() {
+            if (this.cargo.equals("Gerente")) {
+                this.contrasena = this.apellidoPaterno + this.matricula.substring(3, this.matricula.length());
+                return this.contrasena;
+            } else {
+                this.contrasena = this.apellidoPaterno + this.matricula.substring(2, this.matricula.length());
+                return this.contrasena;
+            }
+        }
+        
+        public void setContrasena(String nuevaContrasena) {
+            this.contrasena = nuevaContrasena;
+        }
 
 	public String getPrimerNombre() {
 		return primerNombre;
@@ -101,6 +117,10 @@ public class Empleado implements Serializable {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
+        
+        public String getContrasena(){
+            return this.contrasena;
+        }
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;

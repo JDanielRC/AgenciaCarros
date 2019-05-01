@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 public class ListaEmpleados {
 	
 	private int size, cantidadGerentes;
+        //La llave es la matricula del empleado, la cual almacena al objeto empleado
 	private HashTable<String, Empleado> listaEmpleados;
 	
 	
@@ -57,6 +58,10 @@ public class ListaEmpleados {
 	public Empleado obtener(String matricula) {
 		return this.listaEmpleados.get(matricula);
 	}
+        
+        public boolean contains(String matricula) {
+            return this.listaEmpleados.containsKey(matricula);
+        }
 	
 	public void almacenarEmpleados() { //crea archivo.dat que almacena todos los datos
 		int j;
@@ -86,8 +91,8 @@ public class ListaEmpleados {
 	
 	public static void main(String[] args) {
 		/*ListaEmpleados lista = new ListaEmpleados();
-		Empleado pedrito = new Empleado("Pedro", "Díaz", "Pérez", "PDP19374", "Empleado");
-		Empleado alfredito = new Empleado("Alfredo", "Martínez", "López", "AML09857", "Empleado");
+		Empleado pedrito = new Empleado("Pedro", "Dï¿½az", "Pï¿½rez", "PDP19374", "Empleado");
+		Empleado alfredito = new Empleado("Alfredo", "Martï¿½nez", "Lï¿½pez", "AML09857", "Empleado");
 		Empleado hugo = new Empleado("Hugo", "Masharelli", "Rocha", "HMR12455", "Gerente");
 		lista.contratar(pedrito);
 		lista.contratar(alfredito);
