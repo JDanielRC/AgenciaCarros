@@ -12,8 +12,10 @@ public class ListaCompras {
 		this.size = 0;
 	}
 
-	public void realizarCompra(ReporteCompra compra) {
+	public Carro realizarCompra(ReporteCompra compra) {
 		this.listaCompras.put(compra.getPlacas(), compra);
+		this.size++;
+		return compra.carroComprado;
 	}
 	
 	public ReporteCompra encontrar(String placas) {
@@ -21,6 +23,7 @@ public class ListaCompras {
 	}
 	
 	public ReporteCompra eliminarRegistro(String placas) {
+		this.size--;
 		return this.listaCompras.delete(placas);
 	}
 	

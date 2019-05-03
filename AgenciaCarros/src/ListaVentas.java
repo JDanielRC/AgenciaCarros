@@ -18,12 +18,14 @@ public class ListaVentas {
 	}
 	
 	public ReporteVenta eliminarRegistro(String placas) {
+		this.size--;
 		return this.listaVentas.delete(placas);
 	}
 	
-	public void realizarVenta(ReporteVenta reporte) {
+	public Carro realizarVenta(ReporteVenta reporte) {
 		this.listaVentas.put(reporte.placas, reporte);
 		this.size++;
+		return reporte.carroVendido;
 	}
 	
 	public void almacenarDatos() {
