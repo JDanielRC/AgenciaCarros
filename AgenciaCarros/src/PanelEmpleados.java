@@ -1,4 +1,5 @@
 
+import java.awt.CardLayout;
 import java.awt.Font;
 import java.io.File;
 import javax.swing.JOptionPane;
@@ -8,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelEmpleados extends javax.swing.JPanel {
 
     private ListaEmpleados le;
+    private CardLayout cardLayout = new CardLayout();
 
     public PanelEmpleados() {
         initComponents();
@@ -15,6 +17,18 @@ public class PanelEmpleados extends javax.swing.JPanel {
         this.llenarTabla();
         tablaEmpleados.setRowHeight(30);
         tablaEmpleados.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
+        
+        //Settear el CardLayout para administrar paneles variables
+        variableP.setLayout(cardLayout);
+        
+        //Crear paneles posibles
+        PanelContratar pc = new PanelContratar();
+        //PanelEditar pe = new PanelEditar();
+        
+        //Asignar paneles al CardLayout
+        variableP.add(pc, "contratar");
+        //variableP.add(pe, "editar");
+        cardLayout.show(variableP, "contratar");
     }
     
     //Llena la tabla con los datos de los empleados de la lista
@@ -83,6 +97,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
         buscarTF = new javax.swing.JTextField();
         buscarB = new javax.swing.JButton();
         variableP = new javax.swing.JPanel();
+        reloadB = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1231, 1000));
         setMinimumSize(new java.awt.Dimension(1231, 1000));
@@ -138,6 +153,14 @@ public class PanelEmpleados extends javax.swing.JPanel {
             .addGap(0, 449, Short.MAX_VALUE)
         );
 
+        reloadB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        reloadB.setText("Actualizar");
+        reloadB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reloadBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,6 +170,8 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addComponent(empleadosL, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reloadB)
+                .addGap(34, 34, 34)
                 .addComponent(buscarB, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buscarTF, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,13 +182,14 @@ public class PanelEmpleados extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(empleadosL, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscarTF)
-                            .addComponent(buscarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(buscarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(reloadB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(empleadosL, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,12 +202,18 @@ public class PanelEmpleados extends javax.swing.JPanel {
         //this.llenarTabla(this.buscarEnTabla(buscarTF.getText()));
     }//GEN-LAST:event_buscarBActionPerformed
 
+    private void reloadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadBActionPerformed
+        ((DefaultTableModel)tablaEmpleados.getModel()).setRowCount(0);
+        this.llenarTabla();
+    }//GEN-LAST:event_reloadBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.JLabel empleadosL;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton reloadB;
     private javax.swing.JTable tablaEmpleados;
     private javax.swing.JPanel variableP;
     // End of variables declaration//GEN-END:variables

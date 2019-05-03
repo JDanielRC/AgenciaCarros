@@ -20,6 +20,13 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(String matricula) {
         super("Venta y compra de carros - " + matricula);
         initComponents();
+        //this.setAlwaysOnTop(true);
+        /*
+        this.setFocusable(true);
+        super.requestFocus();
+        this.setVisible(true);
+        this.setState(JFrame.NORMAL);
+        */
         
         //Settear el CardLayout para administrar paneles variables
         variableP.setLayout(cardLayout);
@@ -29,16 +36,14 @@ public class MainFrame extends javax.swing.JFrame {
         PanelInventario pi = new PanelInventario();
         PanelEmpleados pe = new PanelEmpleados();
         PanelSettings ps = new PanelSettings();
-        PanelCompras pc = new PanelCompras();
-        PanelVentas pv = new PanelVentas();
+        PanelCompraVenta pcv = new PanelCompraVenta();
         
         //Asignar paneles al CardLayout
         variableP.add(pr, "resumen");
         variableP.add(pi, "inventario");
         variableP.add(pe, "empleados");
         variableP.add(ps, "settings");
-        variableP.add(pc, "compras");
-        variableP.add(pv, "ventas");
+        variableP.add(pcv, "compraVenta");
           
         //Resumen esta selecionado por defecto
         resumen.setSelected(true);
@@ -57,8 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
             inventario.setVisible(true);
             empleados.setVisible(true);
             editarSistema.setVisible(true);
-            compras.setVisible(false);
-            ventas.setVisible(false);
+            compraVenta.setVisible(false);
             
             //Settear bienvenida del GUI
             bienvenidaL.setText("Bienvenid@ master");
@@ -79,8 +83,7 @@ public class MainFrame extends javax.swing.JFrame {
                 inventario.setVisible(true);
                 empleados.setVisible(true);
                 editarSistema.setVisible(false);
-                compras.setVisible(true);
-                ventas.setVisible(true);
+                compraVenta.setVisible(true);
                 
                 //Verifica si tiene foto
                 ImageIcon fotoEmpleado = new ImageIcon(empleadoActual.getFoto());
@@ -97,8 +100,7 @@ public class MainFrame extends javax.swing.JFrame {
                 inventario.setVisible(true);
                 empleados.setVisible(false);
                 editarSistema.setVisible(false);
-                compras.setVisible(false);
-                ventas.setVisible(false);
+                compraVenta.setVisible(false);
                 
                 //Verifica si tiene foto
                 ImageIcon fotoEmpleado = new ImageIcon(empleadoActual.getFoto());
@@ -126,16 +128,15 @@ public class MainFrame extends javax.swing.JFrame {
         menuSeleccionBG = new javax.swing.ButtonGroup();
         menuP = new javax.swing.JPanel();
         fotoUsuarioL = new javax.swing.JLabel();
-        cerrarSesion = new javax.swing.JButton();
         bienvenidaL = new javax.swing.JLabel();
         accesoActualL = new javax.swing.JLabel();
         resumen = new javax.swing.JRadioButton();
         inventario = new javax.swing.JRadioButton();
         empleados = new javax.swing.JRadioButton();
         editarSistema = new javax.swing.JRadioButton();
-        compras = new javax.swing.JRadioButton();
-        ventas = new javax.swing.JRadioButton();
+        compraVenta = new javax.swing.JRadioButton();
         fechaActualL = new javax.swing.JLabel();
+        cerrarSesion = new javax.swing.JButton();
         variableP = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,14 +156,6 @@ public class MainFrame extends javax.swing.JFrame {
         menuP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         fotoUsuarioL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        cerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        cerrarSesion.setText("Cerrar Sesion");
-        cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarSesionActionPerformed(evt);
-            }
-        });
 
         bienvenidaL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         bienvenidaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -208,53 +201,35 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        menuSeleccionBG.add(compras);
-        compras.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        compras.setText("Compras");
-        compras.addActionListener(new java.awt.event.ActionListener() {
+        menuSeleccionBG.add(compraVenta);
+        compraVenta.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        compraVenta.setText("C/V");
+        compraVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comprasActionPerformed(evt);
-            }
-        });
-
-        menuSeleccionBG.add(ventas);
-        ventas.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        ventas.setText("Ventas");
-        ventas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ventasActionPerformed(evt);
+                compraVentaActionPerformed(evt);
             }
         });
 
         fechaActualL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         fechaActualL.setText("jLabel1");
 
+        cerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        cerrarSesion.setText("Cerrar Sesion");
+        cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuPLayout = new javax.swing.GroupLayout(menuP);
         menuP.setLayout(menuPLayout);
         menuPLayout.setHorizontalGroup(
             menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(resumen)
-                            .addComponent(inventario))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ventas)
-                            .addComponent(compras)
-                            .addComponent(empleados)
-                            .addComponent(editarSistema))
-                        .addGap(0, 88, Short.MAX_VALUE))))
-            .addGroup(menuPLayout.createSequentialGroup()
                 .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuPLayout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuPLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(bienvenidaL)))
@@ -265,6 +240,23 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(accesoActualL)
                     .addComponent(fechaActualL))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(menuPLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPLayout.createSequentialGroup()
+                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resumen)
+                            .addComponent(inventario))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuPLayout.createSequentialGroup()
+                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(compraVenta)
+                            .addComponent(empleados)
+                            .addComponent(editarSistema)
+                            .addGroup(menuPLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         menuPLayout.setVerticalGroup(
             menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,8 +269,6 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(accesoActualL)
                 .addGap(18, 18, 18)
                 .addComponent(fechaActualL)
-                .addGap(36, 36, 36)
-                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(resumen)
                 .addGap(18, 18, 18)
@@ -288,9 +278,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(editarSistema)
                 .addGap(18, 18, 18)
-                .addComponent(compras)
-                .addGap(18, 18, 18)
-                .addComponent(ventas)
+                .addComponent(compraVenta)
+                .addGap(89, 89, 89)
+                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -300,7 +290,7 @@ public class MainFrame extends javax.swing.JFrame {
         variableP.setLayout(variablePLayout);
         variablePLayout.setHorizontalGroup(
             variablePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1229, Short.MAX_VALUE)
+            .addGap(0, 1327, Short.MAX_VALUE)
         );
         variablePLayout.setVerticalGroup(
             variablePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,13 +353,9 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout.show(variableP, "settings");
     }//GEN-LAST:event_editarSistemaActionPerformed
 
-    private void comprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprasActionPerformed
-        cardLayout.show(variableP, "compras");
-    }//GEN-LAST:event_comprasActionPerformed
-
-    private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
-        cardLayout.show(variableP, "ventas");
-    }//GEN-LAST:event_ventasActionPerformed
+    private void compraVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraVentaActionPerformed
+        cardLayout.show(variableP, "compraVenta");
+    }//GEN-LAST:event_compraVentaActionPerformed
 
     
     /**
@@ -413,7 +399,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel accesoActualL;
     private javax.swing.JLabel bienvenidaL;
     private javax.swing.JButton cerrarSesion;
-    private javax.swing.JRadioButton compras;
+    private javax.swing.JRadioButton compraVenta;
     private javax.swing.JRadioButton editarSistema;
     private javax.swing.JRadioButton empleados;
     private javax.swing.JLabel fechaActualL;
@@ -423,6 +409,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup menuSeleccionBG;
     private javax.swing.JRadioButton resumen;
     private javax.swing.JPanel variableP;
-    private javax.swing.JRadioButton ventas;
     // End of variables declaration//GEN-END:variables
 }

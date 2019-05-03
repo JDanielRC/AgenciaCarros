@@ -1,5 +1,6 @@
 import java.awt.Image;
 import java.io.Serializable;
+import javax.swing.ImageIcon;
 
 public class Empleado implements Serializable {
 
@@ -14,17 +15,17 @@ public class Empleado implements Serializable {
                        rfc;
 	private Image foto;
 	
-	public Empleado(String primerNombre, String apellidoPaterno, String apellidoMaterno, String rfc, String cargo) {
+	public Empleado(String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno, String rfc, String cargo, Image foto) {
 		this.primerNombre = primerNombre;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
 		this.rfc = rfc;
 		this.cargo = cargo;
-		this.foto = null;
+		this.foto = foto;
 		this.matricula = null;
                 this.contrasena = "";
 		this.cargo = cargo;
-		this.segundoNombre = null;
+		this.segundoNombre = segundoNombre;
 	}
 	
 	//espacios entre a000 y a009 reservados para gerentes
