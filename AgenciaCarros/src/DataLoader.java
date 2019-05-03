@@ -35,6 +35,56 @@ public class DataLoader {
 		return null;
 	}
 	
+	public static ListaCompras loadCompras(File archivo) {
+		try {
+			FileInputStream fs = new FileInputStream(archivo);
+			ObjectInputStream os = new ObjectInputStream(fs);
+			ListaCompras lista = new ListaCompras();
+			while(fs.available() > 0) {
+				Object objeto = os.readObject();
+				ReporteCompra reporte = (ReporteCompra) objeto;
+				lista.realizarCompra(reporte);
+			}
+			os.close();
+			return lista;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ListaVentas loadVentas(File archivo) {
+		try {
+			FileInputStream fs = new FileInputStream(archivo);
+			ObjectInputStream os = new ObjectInputStream(fs);
+			ListaVentas lista = new ListaVentas();
+			while(fs.available() > 0) {
+				Object objeto = os.readObject();
+				ReporteVenta reporte = (ReporteVenta) objeto;
+				lista.realizarVenta(reporte);
+			}
+			os.close();
+			return lista;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static ListaEmpleados loadEmployees(File archivo) {
 		try {
 			FileInputStream fs = new FileInputStream(archivo);
@@ -79,6 +129,34 @@ public class DataLoader {
 		ObjectOutputStream os;
 		try {
 			fs = new FileOutputStream("CarDatabase.bin");
+			os = new ObjectOutputStream(fs);
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	public static void createEmptyListaVentas() {
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("VentasDatabase.bin");
+			os = new ObjectOutputStream(fs);
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	public static void createEmptyListaCompras() {
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("ComprasDatabase.bin");
 			os = new ObjectOutputStream(fs);
 			os.close();
 			fs.close();

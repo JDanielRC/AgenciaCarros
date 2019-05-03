@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class ListaVentas {
 	
@@ -21,6 +24,31 @@ public class ListaVentas {
 	public void realizarVenta(ReporteVenta reporte) {
 		this.listaVentas.put(reporte.placas, reporte);
 		this.size++;
+	}
+	
+	public void almacenarDatos() {
+		int j;
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("VentasDatabase.bin");
+			os = new ObjectOutputStream(fs);
+			for (int i = 0; i < this.listaVentas.getTabla().length; i++) {
+				j = 0;
+				if (listaVentas.getTabla()[i].size() > 0) {
+					for (int l = 0; l < listaVentas.getTabla()[i].size(); l++) {
+						ReporteVenta reporte = listaVentas.getTabla()[i].getEn(j).valor;
+						j++;
+						os.writeObject(reporte);
+					}
+				}
+			}
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public HashTable<String, ReporteVenta> getLista() {
