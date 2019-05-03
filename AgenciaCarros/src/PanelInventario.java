@@ -13,7 +13,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
     public PanelInventario() {
         initComponents();
-        this.inventario = DataLoader.loadInventory(new File("Database.bin"));
+        this.inventario = DataLoader.loadInventory(new File("CarDatabase.bin"));
         this.llenarTabla(this.inventario.listaCarros());
         tablaInventario.setRowHeight(30);
         tablaInventario.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
