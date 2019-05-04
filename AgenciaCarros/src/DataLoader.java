@@ -116,6 +116,47 @@ public class DataLoader {
 		return null;
 	}
 	
+	public static DatosEmpresa loadCompany(File archivo) {
+		try {
+			FileInputStream fs = new FileInputStream(archivo);
+			ObjectInputStream os = new ObjectInputStream(fs);
+			DatosEmpresa company = null;;
+			while(fs.available() > 0) {
+				Object objeto = os.readObject();
+				company = (DatosEmpresa) objeto;
+			}
+			os.close();
+			return company;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+                        System.out.println("No se encontro archivo con empleados. Se creará uno vacio");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------");
+                        DataLoader.createEmptyEmployeesFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void createEmptyCompanyFile() {
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("CompanyInformation.bin");
+			os = new ObjectOutputStream(fs);
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void createEmptyEmployeesFile() {
 		FileOutputStream fs;
 		ObjectOutputStream os;

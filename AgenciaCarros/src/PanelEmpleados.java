@@ -1,10 +1,8 @@
-
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 public class PanelEmpleados extends javax.swing.JPanel {
 
