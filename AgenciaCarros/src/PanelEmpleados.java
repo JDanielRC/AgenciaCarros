@@ -9,11 +9,12 @@ import javax.swing.table.DefaultTableModel;
 public class PanelEmpleados extends javax.swing.JPanel {
 
     private ListaEmpleados le;
-    private CardLayout cardLayout = new CardLayout();
+    public CardLayout cardLayout = new CardLayout();
 
     public PanelEmpleados() {
         initComponents();
         this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
+        //tablaEmpleados.setcolumn
         this.llenarTabla();
         tablaEmpleados.setRowHeight(30);
         tablaEmpleados.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
@@ -60,6 +61,11 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 modelo.addRow(new Object[8]);
             }
         }
+    }
+    
+    public void casoBase() {
+        tablaEmpleados.
+        this.cardLayout.show(variableP, "contratar");
     }
     
     /* Falta implementar busqueda
@@ -204,6 +210,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
     private void reloadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadBActionPerformed
         ((DefaultTableModel)tablaEmpleados.getModel()).setRowCount(0);
+        this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         this.llenarTabla();
     }//GEN-LAST:event_reloadBActionPerformed
 

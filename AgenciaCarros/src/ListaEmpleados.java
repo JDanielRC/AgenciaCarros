@@ -1,6 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import javax.swing.ImageIcon;
 
 public class ListaEmpleados {
 	
@@ -61,6 +62,20 @@ public class ListaEmpleados {
         
         public boolean contains(String matricula) {
             return this.listaEmpleados.containsKey(matricula);
+        }
+        
+        public void modificarEmpleado(String matricula, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
+                                      String rfc, String cargo, ImageIcon foto) {
+            Empleado temporal = this.listaEmpleados.get(matricula);
+            temporal.setPrimerNombre(primerNombre);
+            temporal.setSegundoNombre(segundoNombre);
+            temporal.setApellidoPaterno(apellidoPaterno);
+            temporal.setApellidoMaterno(apellidoMaterno);
+            temporal.setRfc(rfc);
+            temporal.setCargo(cargo);
+            temporal.setFoto(foto);
+            this.listaEmpleados.delete(matricula);
+            this.listaEmpleados.put(matricula, temporal);
         }
 	
 	public void almacenarEmpleados() { //crea archivo.dat que almacena todos los datos

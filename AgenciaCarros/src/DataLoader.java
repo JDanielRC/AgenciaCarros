@@ -24,7 +24,10 @@ public class DataLoader {
 			return a;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("No se encontro archivo con inventario. Se creará uno vacio");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------");
+                        DataLoader.createEmptyInventoryFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +52,7 @@ public class DataLoader {
 			return lista;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,7 +77,7 @@ public class DataLoader {
 			return lista;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,7 +102,10 @@ public class DataLoader {
 			return b;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+                        System.out.println("No se encontro archivo con empleados. Se creará uno vacio");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------");
+                        DataLoader.createEmptyEmployeesFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

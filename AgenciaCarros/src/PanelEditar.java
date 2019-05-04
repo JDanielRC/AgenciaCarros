@@ -6,28 +6,34 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
-public class PanelContratar extends javax.swing.JPanel {
+public class PanelEditar extends javax.swing.JPanel {
     
     private ImageIcon foto;
     private ListaEmpleados le;
+    private Empleado empleadoSeleccionado;
+    private PanelEmpleados pe;
 
-    public PanelContratar() {
+    public PanelEditar(PanelEmpleados pe) {
         initComponents();
         le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         this.foto = null;
+        this.pe = pe;
     }
     
-    private void vaciarCampos() {
-        primerNombreTF.setText("");
-        segundoNombreTF.setText("");
-        apellidoPaternoTF.setText("");
-        apellidoMaternoTF.setText("");
-        rfcTF.setText("");
-        cargoTF.setText("");
-        archivoL.setText("Seleccionar");
+    public void llenarCampos(Empleado empleado) {
+        this.empleadoSeleccionado = empleado;
+        primerNombreTF.setText(empleado.getPrimerNombre());
+        segundoNombreTF.setText(empleado.getSegundoNombre());
+        apellidoPaternoTF.setText(empleado.getApellidoPaterno());
+        apellidoMaternoTF.setText(empleado.getApellidoMaterno());
+        rfcTF.setText(empleado.getRfc());
+        cargoTF.setText(empleado.getCargo());
+        this.foto = empleado.getFoto();
+        archivoL.setText(this.foto.toString());
     }
 
     /**
@@ -39,8 +45,8 @@ public class PanelContratar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contratarL = new javax.swing.JLabel();
-        contratarB = new javax.swing.JButton();
+        editarL = new javax.swing.JLabel();
+        despedirB = new javax.swing.JButton();
         primerNombreL = new javax.swing.JLabel();
         segundoNombreL = new javax.swing.JLabel();
         apellidoPaternoL = new javax.swing.JLabel();
@@ -56,6 +62,7 @@ public class PanelContratar extends javax.swing.JPanel {
         apellidoMaternoTF = new javax.swing.JTextField();
         cargoTF = new javax.swing.JTextField();
         rfcTF = new javax.swing.JTextField();
+        editarB = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1231, 449));
         setMinimumSize(new java.awt.Dimension(1231, 449));
@@ -63,14 +70,14 @@ public class PanelContratar extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1231, 449));
         setRequestFocusEnabled(false);
 
-        contratarL.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        contratarL.setText("Contratar");
+        editarL.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        editarL.setText("Editar");
 
-        contratarB.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        contratarB.setText("Contratar");
-        contratarB.addActionListener(new java.awt.event.ActionListener() {
+        despedirB.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        despedirB.setText("Despedir");
+        despedirB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contratarBActionPerformed(evt);
+                despedirBActionPerformed(evt);
             }
         });
 
@@ -118,6 +125,14 @@ public class PanelContratar extends javax.swing.JPanel {
 
         rfcTF.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
 
+        editarB.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        editarB.setText("Editar");
+        editarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,10 +143,10 @@ public class PanelContratar extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(apellidoMaternoL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contratarB))
+                        .addComponent(despedirB))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contratarL)
+                            .addComponent(editarL)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(primerNombreL)
@@ -160,7 +175,10 @@ public class PanelContratar extends javax.swing.JPanel {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(rfcTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(cargoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(133, 133, 133)
+                                        .addComponent(editarB)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37))
         );
@@ -168,7 +186,7 @@ public class PanelContratar extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contratarL)
+                .addComponent(editarL)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(primerNombreL)
@@ -191,7 +209,9 @@ public class PanelContratar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contratarB))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(despedirB)
+                            .addComponent(editarB)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -202,23 +222,14 @@ public class PanelContratar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void contratarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarBActionPerformed
-        
-        if(primerNombreTF.getText().equals("") || apellidoPaternoTF.getText().equals("") || apellidoMaternoTF.getText().equals("") ||
-           rfcTF.getText().equals("") || cargoTF.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Todos los espacios son obligatorios excepto Segundo Nombre y Foto");
-        } else if(!cargoTF.getText().equals("Gerente") && !cargoTF.getText().equals("Empleado")) {
-            JOptionPane.showMessageDialog(this, "Por el momento solo existen las posiciones de Empleado y Gerente. Por favor seleccione una de las mismas");
-        } else {
-            Empleado nuevoEmpleado = new Empleado(primerNombreTF.getText(), segundoNombreTF.getText(), apellidoPaternoTF.getText(),
-                                              apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), this.foto);
-            this.le.contratar(nuevoEmpleado);
+    private void despedirBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirBActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Esta seguro de que desea despedir a " + empleadoSeleccionado.getPrimerNombre() + " " + empleadoSeleccionado.getApellidoPaterno()
+                + "? Esta acción no se puede deshacer", "Despedir empleado?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            this.le.despedir(empleadoSeleccionado.getMatricula());
             this.le.almacenarEmpleados();
-            this.vaciarCampos();
-            this.foto = null;
-            JOptionPane.showMessageDialog(this, "La contratación ha sido exitosa");
-        }
-    }//GEN-LAST:event_contratarBActionPerformed
+            this.pe.casoBase();
+        } 
+    }//GEN-LAST:event_despedirBActionPerformed
 
     private void selectFotoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFotoBActionPerformed
         JFileChooser chooser = new JFileChooser();
@@ -238,6 +249,25 @@ public class PanelContratar extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_selectFotoBActionPerformed
 
+    private void editarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBActionPerformed
+        Empleado empleadoEditado = new Empleado(primerNombreTF.getText(), segundoNombreTF.getText(), apellidoPaternoTF.getText(),
+                                              apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), this.foto);
+        
+        if(empleadoEditado.equals(empleadoSeleccionado)) {
+            JOptionPane.showMessageDialog(this, "No se realizaron cambios al empleado seleccionado");
+        } else if(primerNombreTF.getText().equals("") || apellidoPaternoTF.getText().equals("") || apellidoMaternoTF.getText().equals("") ||
+           rfcTF.getText().equals("") || cargoTF.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Todos los espacios son obligatorios excepto Segundo Nombre y Foto");
+        } else if(!cargoTF.getText().equals("Gerente") && !cargoTF.getText().equals("Empleado")) {
+            JOptionPane.showMessageDialog(this, "Por el momento solo existen las posiciones de Empleado y Gerente. Por favor seleccione una de las mismas");
+        } else {
+            this.le.modificarEmpleado(empleadoSeleccionado.getMatricula(), primerNombreTF.getText(), segundoNombreTF.getText(), apellidoPaternoTF.getText(),
+                                              apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), this.foto);
+            this.le.almacenarEmpleados();
+            JOptionPane.showMessageDialog(this, "La edición ha sido exitosa");
+        }
+    }//GEN-LAST:event_editarBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoMaternoL;
@@ -247,8 +277,9 @@ public class PanelContratar extends javax.swing.JPanel {
     private javax.swing.JLabel archivoL;
     private javax.swing.JLabel cargoL;
     private javax.swing.JTextField cargoTF;
-    private javax.swing.JButton contratarB;
-    private javax.swing.JLabel contratarL;
+    private javax.swing.JButton despedirB;
+    private javax.swing.JButton editarB;
+    private javax.swing.JLabel editarL;
     private javax.swing.JLabel fotoL;
     private javax.swing.JLabel primerNombreL;
     private javax.swing.JTextField primerNombreTF;

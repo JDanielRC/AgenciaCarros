@@ -1,6 +1,8 @@
 
 import java.awt.Image;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -37,24 +39,10 @@ public class LoginFrame extends javax.swing.JFrame {
     //Verifica si ya se cuenta con archivos consistentes, esten vacios o no
     private void revisarBD() {
         //Archivo Empleados
-        try {
-            this.listaEmpleados = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
-        } catch(NullPointerException e) {
-            System.out.println("No se encontro archivo con empleados. Se creará uno vacio");
-            System.out.println();
-            System.out.println("---------------------------------------------------------");
-            DataLoader.createEmptyEmployeesFile();
-        }
+        this.listaEmpleados = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         
         //Archivo Inventario
-        try {
-            Inventario inventario = DataLoader.loadInventory(new File("CarDatabase.bin"));
-        } catch(NullPointerException e) {
-            System.out.println("No se encontro archivo con carros. Se creará uno vacio");
-            System.out.println();
-            System.out.println("---------------------------------------------------------");
-            DataLoader.createEmptyInventoryFile();
-        }
+        Inventario inventario = DataLoader.loadInventory(new File("CarDatabase.bin"));
     }
 
     /**

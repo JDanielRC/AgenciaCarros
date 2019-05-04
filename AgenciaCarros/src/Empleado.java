@@ -13,9 +13,9 @@ public class Empleado implements Serializable {
                        contrasena,
                        cargo,
                        rfc;
-	private Image foto;
+	private ImageIcon foto;
 	
-	public Empleado(String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno, String rfc, String cargo, Image foto) {
+	public Empleado(String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno, String rfc, String cargo, ImageIcon foto) {
 		this.primerNombre = primerNombre;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
@@ -107,11 +107,11 @@ public class Empleado implements Serializable {
 		return cargo;
 	}
 
-	public void setFoto(Image foto) {
+	public void setFoto(ImageIcon foto) {
 		this.foto = foto;
 	}
 
-	public Image getFoto() {
+	public ImageIcon getFoto() {
 		return foto;
 	}
 

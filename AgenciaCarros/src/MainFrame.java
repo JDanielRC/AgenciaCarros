@@ -86,7 +86,7 @@ public class MainFrame extends javax.swing.JFrame {
                 compraVenta.setVisible(true);
                 
                 //Verifica si tiene foto
-                ImageIcon fotoEmpleado = new ImageIcon(empleadoActual.getFoto());
+                ImageIcon fotoEmpleado = empleadoActual.getFoto();
                 if(fotoEmpleado != null) {
                     fotoUsuarioL.setIcon(fotoEmpleado);
                 //Sino, utiliza la default
@@ -103,7 +103,7 @@ public class MainFrame extends javax.swing.JFrame {
                 compraVenta.setVisible(false);
                 
                 //Verifica si tiene foto
-                ImageIcon fotoEmpleado = new ImageIcon(empleadoActual.getFoto());
+                ImageIcon fotoEmpleado = empleadoActual.getFoto();
                 if(fotoEmpleado != null) {
                     fotoUsuarioL.setIcon(fotoEmpleado);
                 //Sino, utiliza la default
