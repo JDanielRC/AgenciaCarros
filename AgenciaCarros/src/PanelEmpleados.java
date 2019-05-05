@@ -1,5 +1,7 @@
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +10,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
     private ListaEmpleados le;
     public CardLayout cardLayout = new CardLayout();
+    private Empleado empleadoSeleccionado;
 
     public PanelEmpleados() {
         initComponents();
@@ -21,13 +24,28 @@ public class PanelEmpleados extends javax.swing.JPanel {
         variableP.setLayout(cardLayout);
         
         //Crear paneles posibles
-        PanelContratar pc = new PanelContratar();
-        //PanelEditar pe = new PanelEditar();
+        PanelContratar pc = new PanelContratar(this);
         
         //Asignar paneles al CardLayout
         variableP.add(pc, "contratar");
-        //variableP.add(pe, "editar");
-        cardLayout.show(variableP, "contratar");
+        this.cardLayout.show(variableP, "contratar");
+        
+        tablaEmpleados.addMouseListener(new MouseAdapter() {
+            public void MouseClicked(MouseEvent e) {
+                System.out.println(190);
+                if(e.getButton() == MouseEvent.BUTTON1) {
+                    mostrarEditar();  
+                }
+            }
+        });
+    }
+    
+    public void mostrarEditar() {
+        int row = tablaEmpleados.getSelectedRow();
+        empleadoSeleccionado = le.obtener(tablaEmpleados.getValueAt(row, 0).toString());
+        PanelEditar pe = new PanelEditar(this,this.empleadoSeleccionado);
+        variableP.add(pe, "editar");
+        cardLayout.show(variableP, "editar");
     }
     
     //Llena la tabla con los datos de los empleados de la lista
@@ -62,8 +80,14 @@ public class PanelEmpleados extends javax.swing.JPanel {
     }
     
     public void casoBase() {
-        tablaEmpleados.
+        tablaEmpleados.clearSelection();
         this.cardLayout.show(variableP, "contratar");
+    }
+    
+    public void actualizarTabla() {
+        ((DefaultTableModel)tablaEmpleados.getModel()).setRowCount(0);
+        this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
+        this.llenarTabla();
     }
     
     /* Falta implementar busqueda
@@ -207,9 +231,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
     }//GEN-LAST:event_buscarBActionPerformed
 
     private void reloadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadBActionPerformed
-        ((DefaultTableModel)tablaEmpleados.getModel()).setRowCount(0);
-        this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
-        this.llenarTabla();
+        this.actualizarTabla();
     }//GEN-LAST:event_reloadBActionPerformed
 
 

@@ -17,11 +17,13 @@ public class PanelEditar extends javax.swing.JPanel {
     private Empleado empleadoSeleccionado;
     private PanelEmpleados pe;
 
-    public PanelEditar(PanelEmpleados pe) {
+    public PanelEditar(PanelEmpleados pe, Empleado empleado) {
         initComponents();
-        le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
+        this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         this.foto = null;
         this.pe = pe;
+        this.empleadoSeleccionado = empleado;
+        this.llenarCampos(empleadoSeleccionado);
     }
     
     public void llenarCampos(Empleado empleado) {

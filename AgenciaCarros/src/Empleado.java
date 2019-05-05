@@ -26,6 +26,19 @@ public class Empleado implements Serializable {
 		this.cargo = cargo;
 		this.segundoNombre = segundoNombre;
 	}
+        //Contenedor con setter de matricula
+        public Empleado(String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno, String rfc, String cargo, String matricula, ImageIcon foto) {
+		this.primerNombre = primerNombre;
+		this.apellidoPaterno = apellidoPaterno;
+		this.apellidoMaterno = apellidoMaterno;
+		this.rfc = rfc;
+		this.cargo = cargo;
+		this.foto = foto;
+		this.matricula = matricula;
+                this.contrasena = "";
+		this.cargo = cargo;
+		this.segundoNombre = segundoNombre;
+	}
 	
 	//espacios entre a000 y a009 reservados para gerentes
 	public String generaMatricula(ListaEmpleados lista) {

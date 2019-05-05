@@ -1,5 +1,6 @@
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -13,10 +14,12 @@ public class PanelContratar extends javax.swing.JPanel {
     
     private ImageIcon foto;
     private ListaEmpleados le;
+    private PanelEmpleados pe;
 
-    public PanelContratar() {
+    public PanelContratar(PanelEmpleados pe) {
         initComponents();
-        le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
+        this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
+        this.pe = pe;
         this.foto = null;
     }
     
@@ -216,6 +219,7 @@ public class PanelContratar extends javax.swing.JPanel {
             this.le.almacenarEmpleados();
             this.vaciarCampos();
             this.foto = null;
+            this.pe.actualizarTabla();
             JOptionPane.showMessageDialog(this, "La contratación ha sido exitosa");
         }
     }//GEN-LAST:event_contratarBActionPerformed
@@ -226,7 +230,9 @@ public class PanelContratar extends javax.swing.JPanel {
         int choosed = chooser.showOpenDialog(null);
         if(choosed == JFileChooser.APPROVE_OPTION) {
             try {
-                this.foto = new ImageIcon(ImageIO.read(chooser.getSelectedFile()));
+                BufferedImage fotin = ImageIO.read(chooser.getSelectedFile());
+                Image img = fotin.getScaledInstance(150, 30, Image.SCALE_SMOOTH);
+                this.foto = new ImageIcon(img);
             } catch(IOException ex) {
                 System.out.println("El archivo no pudo ser leido correctamente");
             }
