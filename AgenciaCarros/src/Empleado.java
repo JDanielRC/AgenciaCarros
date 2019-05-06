@@ -47,33 +47,6 @@ public class Empleado implements Serializable {
 		this.cargo = cargo;
 		this.segundoNombre = segundoNombre;
 	}
-	
-	//espacios entre a000 y a009 reservados para gerentes
-	public String generaMatricula(ListaEmpleados lista) {
-		if (this.cargo.equals("Gerente")) {
-			if (lista.getCantidadGerentes() < 10) {
-				String matricula = "A00" + (lista.getCantidadGerentes());
-				this.matricula = matricula;
-				return matricula;
-			} else {
-				throw new IndexOutOfBoundsException("No puede existir un n�mero mayor a 10 gerentes");
-			}
-		} else {
-			String matricula = "A0" + (lista.getSize() + 10);
-			this.matricula = matricula;
-			return matricula;
-		}
-	}      
-        
-        public String generaContrasena() {
-            if (this.cargo.equals("Gerente")) {
-                this.contrasena = this.apellidoPaterno + this.matricula.substring(3, this.matricula.length());
-                return this.contrasena;
-            } else {
-                this.contrasena = this.apellidoPaterno + this.matricula.substring(2, this.matricula.length());
-                return this.contrasena;
-            }
-        }
         
         public void setContrasena(String nuevaContrasena) {
             this.contrasena = nuevaContrasena;

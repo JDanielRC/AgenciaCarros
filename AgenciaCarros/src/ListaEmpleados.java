@@ -60,7 +60,7 @@ public class ListaEmpleados {
 	}
 	
 	public void contratar(Empleado empleado) {
-		this.listaEmpleados.put(empleado.generaMatricula(this), empleado);
+		this.listaEmpleados.put(empleado.getMatricula(), empleado);
 		this.size++;
 	}
 	
