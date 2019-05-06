@@ -9,7 +9,7 @@ public class ReporteCompra implements Serializable {
 	String fecha, placas;
 	
 	public ReporteCompra(int precio, String color, String modelo, String size, int year, String marca, String fecha, String fechaCompra, String placas) {
-		this.carroComprado = new Carro(precio, color, modelo, size, year, marca);
+		this.carroComprado = new Carro(placas, precio, color, modelo, size, year, marca);
 		this.costo = this.carroComprado.getPrecio();
 		 this.fecha = fechaCompra;
 		 this.placas = placas;

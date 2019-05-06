@@ -36,7 +36,7 @@ public class PanelEditar extends javax.swing.JPanel {
             apellidoMaternoTF.setText(empleado.getApellidoMaterno());
             rfcTF.setText(empleado.getRfc());
             cargoTF.setText(empleado.getCargo());
-            this.foto = empleado.getFoto();
+            this.foto = null;
             archivoL.setText(this.foto.toString());
         } catch(NullPointerException e) {
         	
@@ -230,15 +230,18 @@ public class PanelEditar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void despedirBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirBActionPerformed
+    	this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         if (JOptionPane.showConfirmDialog(this, "Esta seguro de que desea despedir a " + empleadoSeleccionado.getPrimerNombre() + " " + empleadoSeleccionado.getApellidoPaterno()
                 + "? Esta acción no se puede deshacer", "Despedir empleado?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             this.le.despedir(empleadoSeleccionado.getMatricula());
             this.le.almacenarEmpleados();
+            this.pe.actualizarTabla();
             this.pe.casoBase();
         } 
     }//GEN-LAST:event_despedirBActionPerformed
 
     private void selectFotoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFotoBActionPerformed
+    	this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(new FileNameExtensionFilter("JPG, GIF and PNG Images", "jpg", "gif", "png"));
         int choosed = chooser.showOpenDialog(null);
@@ -259,6 +262,7 @@ public class PanelEditar extends javax.swing.JPanel {
     }//GEN-LAST:event_selectFotoBActionPerformed
 
     private void editarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBActionPerformed
+    	this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         Empleado empleadoEditado = new Empleado(primerNombreTF.getText(), segundoNombreTF.getText(), apellidoPaternoTF.getText(),
                                               apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), this.foto);
         

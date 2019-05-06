@@ -62,7 +62,6 @@ public class PanelEmpleados extends javax.swing.JPanel {
     //Llena la tabla con los datos de los empleados de la lista
     private void llenarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) tablaEmpleados.getModel();
-        
         System.out.println("La base de datos actualmente cuenta con " + this.le.getSize() + " empleados");
         System.out.println();
         System.out.println("----------------------------------------------------------------");
@@ -100,6 +99,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
         this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         this.llenarTabla();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

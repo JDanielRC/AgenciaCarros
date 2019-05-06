@@ -22,7 +22,7 @@ public class Empleado implements Serializable {
 		this.cargo = cargo;
 		this.foto = foto;
 		this.matricula = null;
-                this.contrasena = "";
+		this.contrasena = "";
 		this.cargo = cargo;
 		this.segundoNombre = segundoNombre;
 	}
@@ -35,7 +35,7 @@ public class Empleado implements Serializable {
 		this.cargo = cargo;
 		this.foto = foto;
 		this.matricula = matricula;
-                this.contrasena = "";
+        this.contrasena = "";
 		this.cargo = cargo;
 		this.segundoNombre = segundoNombre;
 	}
