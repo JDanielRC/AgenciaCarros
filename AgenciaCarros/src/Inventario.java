@@ -73,14 +73,16 @@ public class Inventario{
 	}
         
         public Carro[] listaCarrosPorModelo(String modelo) {
-            Carro[] lista = new Carro[this.totalCarros];;
+            Carro[] lista = new Carro[this.totalCarros];
+          int pos = 0;
 		for (int i = 0; i < this.inventario.getTabla().length; i++) {
                     if(this.inventario.getTabla()[i].size() > 0) {
 			if (this.inventario.getTabla()[i].getEn(0).getValor().getModelo().equals(modelo)) {
-                                lista = new Carro[this.inventario.getTabla()[i].size()];
+				lista = new Carro[this.inventario.getTabla()[i].size()];
 				for (int j = 0; j < this.inventario.getTabla()[i].size(); j++) {
 					Carro carro = this.inventario.getTabla()[i].getEn(j).valor;
-					lista[j] = carro;
+					lista[pos] = carro;
+					pos++;
 				}
 			}
                     }
