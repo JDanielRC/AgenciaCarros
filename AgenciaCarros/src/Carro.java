@@ -21,6 +21,7 @@ public class Carro implements Serializable {
 		this.size = size;
 		this.year = year;
 		this.marca = marca;
+		this.placas = placas;
 	}
 
 
@@ -70,6 +71,16 @@ public class Carro implements Serializable {
 
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+
+
+	public String getPlacas() {
+		return placas;
+	}
+
+
+	public void setPlacas(String placas) {
+		this.placas = placas;
 	}
 
 	
