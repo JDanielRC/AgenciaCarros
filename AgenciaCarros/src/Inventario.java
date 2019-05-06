@@ -95,6 +95,16 @@ public class Inventario{
         public boolean containsModelo(String modelo) {
             return this.inventario.containsKey(modelo);
         }
+        
+    public boolean containsPlaca(String placas) {
+    	Carro[] lista = listaCarros();
+    	for (int i = 0; i < lista.length; i++) {
+    		if (lista[i].getPlacas().equals(placas)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 	
 	public double obtainPrice(String modelo) {
 		return this.inventario.get(modelo).getPrecio();

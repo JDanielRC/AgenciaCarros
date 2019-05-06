@@ -16,7 +16,7 @@ public class PanelCompraVenta extends javax.swing.JPanel {
         String year = "" + carro.getYear();
         String precio = "" + carro.getPrecio();
         
-        this.placaTFV.setText(carro.getPlaca());
+        this.placaTFV.setText(carro.getPlacas());
         this.modeloTFV.setText(carro.getModelo());
         this.anoTFV.setText(year);
         this.marcaTFV.setText(carro.getMarca());
@@ -386,7 +386,7 @@ public class PanelCompraVenta extends javax.swing.JPanel {
         if(placaTF.getText().equals("") || modeloTF.getText().equals("") || anoTF.getText().equals("") ||
            marcaTF.getText().equals("") || colorTF.getText().equals("") || tamanoTF.getText().equals("") || precioTF.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Todos los espacios deben ser llenados para realizar la compra");
-        } else if(this.inventario.contains(placa)) {
+        } else if(this.inventario.containsPlaca(placaTF.getText())) {
             JOptionPane.showMessageDialog(this, "El inventario ya cuenta con un carro con esa placa. Por favor intente de nuevo");
         } else {
             Carro carroComprado = new Carro(placaTF.getText(), Integer.parseInt(precioTF.getText()), colorTF.getText(), modeloTF.getText(), tamanoTF.getText(), Integer.parseInt(anoTF.getText()), marcaTF.getText());

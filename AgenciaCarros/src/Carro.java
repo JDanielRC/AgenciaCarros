@@ -3,7 +3,7 @@ import java.io.Serializable;
 public class Carro implements Serializable {
 
 	private static final long serialVersionUID = -1278727701768916994L;
-	private String placa, color, modelo, size, marca, placas;
+	private String color, modelo, size, marca, placas;
 	private int year, precio;
 	
 	public Carro(String placas, int precio, String color, String modelo, String size, int year, String marca) {
@@ -15,14 +15,7 @@ public class Carro implements Serializable {
 		this.marca = marca;
 		this.placas = placas;
 	}
-        
-        public String getPlaca() {
-            return this.placa;
-        }
-        
-        public void setPlaca(String placa) {
-            this.placa = placa;
-        }
+
 
 	public double getPrecio() {
 		return precio;
