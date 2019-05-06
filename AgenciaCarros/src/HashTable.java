@@ -1,3 +1,11 @@
+//Autores:
+//Carlos Ernesto Lopez Solano A01633683
+//Juan Daniel Rubio Camacho A01633924
+//Nombre de la clase: HashTable.java
+//Fecha: 05/05/2019
+//Comentarios u observaciones.
+//------------------------------------------------------------------------------
+
 import java.util.NoSuchElementException;
 
 public class HashTable<K, V> {
@@ -57,7 +65,7 @@ public class HashTable<K, V> {
 				return this.tabla[pos].getEn(i).valor;
 			} 
 		}
-		throw new NoSuchElementException("No se encontró un valor que contenga esa llave");
+		throw new NoSuchElementException("No se encontrï¿½ un valor que contenga esa llave");
 		
 	}
 	
@@ -104,7 +112,7 @@ public class HashTable<K, V> {
 		return this.size;
 	}
 	
-	public V deleteQueue(K llave) { //metodo nuevo, actua como una queue para borrar el último elemento que tenemos
+	public V deleteQueue(K llave) { //metodo nuevo, actua como una queue para borrar el ï¿½ltimo elemento que tenemos
 		int pos = llave.hashCode() % this.tabla.length;
 		if (tabla[pos].size() > 0) {
 			return tabla[pos].borrarInicio().getValor();

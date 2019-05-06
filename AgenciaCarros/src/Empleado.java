@@ -1,3 +1,11 @@
+//Autores:
+//Carlos Ernesto Lopez Solano A01633683
+//Juan Daniel Rubio Camacho A01633924
+//Nombre de la clase: Empleado.java
+//Fecha: 05/05/2019
+//Comentarios u observaciones.
+//------------------------------------------------------------------------------
+
 import java.io.Serializable;
 import javax.swing.ImageIcon;
 

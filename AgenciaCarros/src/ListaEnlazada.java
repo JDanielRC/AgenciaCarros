@@ -1,3 +1,11 @@
+//Autores:
+//Carlos Ernesto Lopez Solano A01633683
+//Juan Daniel Rubio Camacho A01633924
+//Nombre de la clase: ListaEnlazada.java
+//Fecha: 05/05/2019
+//Comentarios u observaciones.
+//------------------------------------------------------------------------------
+
 import java.util.NoSuchElementException;
 
 public class ListaEnlazada<E> {
@@ -28,7 +36,7 @@ public class ListaEnlazada<E> {
 		try {
 			return this.inicio.getDato();
 		} catch (NullPointerException e) {
-			throw new NoSuchElementException("No se puede regresar el primer elemento de una lista enlazada vacía");
+			throw new NoSuchElementException("No se puede regresar el primer elemento de una lista enlazada vacï¿½a");
 		}
 
 	}
@@ -37,7 +45,7 @@ public class ListaEnlazada<E> {
 		try {
 			return this.fin.getDato();
 		} catch (NullPointerException e) {
-			throw new NoSuchElementException("No se puede regresar el último elemento de una lista enlazada vacía");
+			throw new NoSuchElementException("No se puede regresar el ï¿½ltimo elemento de una lista enlazada vacï¿½a");
 		}
 	}
 	
@@ -79,7 +87,7 @@ public class ListaEnlazada<E> {
 			}
 			return res;
 		} catch (NullPointerException|NoSuchElementException e) {
-			throw new IndexOutOfBoundsException("No puedes borrar el inicio de una lista vacía");
+			throw new IndexOutOfBoundsException("No puedes borrar el inicio de una lista vacï¿½a");
 		}
 	}
 	
@@ -98,7 +106,7 @@ public class ListaEnlazada<E> {
 			try {
 				return this.borrarInicio();
 			} catch(IndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException("No se puede borrar el fin de una lista vacía");
+				throw new IndexOutOfBoundsException("No se puede borrar el fin de una lista vacï¿½a");
 			}
 		}
 	}
@@ -111,7 +119,7 @@ public class ListaEnlazada<E> {
 	
 	public E getEn(int pos) {
 		if (pos > this.size || pos < 0) {
-			throw new NoSuchElementException("Posición Inválida");
+			throw new NoSuchElementException("Posiciï¿½n Invï¿½lida");
 		} else if (pos == this.size-1) {
 			return this.fin();
 		}
@@ -124,7 +132,7 @@ public class ListaEnlazada<E> {
 	
 	public void setEn(E dato, int pos) {
 		if (pos > this.size || pos < 0) {
-			throw new NoSuchElementException("Posición Inválida");
+			throw new NoSuchElementException("Posiciï¿½n Invï¿½lida");
 		}
 		NodoLE<E> current = this.inicio;
 		for (int i = 0; i < pos; i++) {
@@ -165,7 +173,7 @@ public class ListaEnlazada<E> {
 	public void insertarEn(E dato, int pos) throws IndexOutOfBoundsException {
 		int cont = 0;
 		if (pos > this.size || pos<0) {
-			throw new IndexOutOfBoundsException("La posición ingresada excede el tamaño del arreglo.");
+			throw new IndexOutOfBoundsException("La posiciï¿½n ingresada excede el tamaï¿½o del arreglo.");
 		}
 		if (estaVacia()) {
 			insertarInicio(dato);
