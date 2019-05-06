@@ -321,7 +321,7 @@ public class PanelEditar extends javax.swing.JPanel {
         } else if(!this.cargoTF.getText().equals("Gerente") && !this.cargoTF.getText().equals("Empleado")) {
             JOptionPane.showMessageDialog(this, "Por el momento solo existen las posiciones de Empleado y Gerente. Por favor seleccione una de las mismas");
         } else {
-            this.le.modificarEmpleado(this.empleadoSeleccionado.getMatricula(), this.contrasenaTF.getText(), this.primerNombreTF.getText(), this.segundoNombreTF.getText(), this.apellidoPaternoTF.getText(),
+            this.le.modificarEmpleado(this.empleadoSeleccionado.getMatricula(), this.matriculaTF.getText(), this.contrasenaTF.getText(), this.primerNombreTF.getText(), this.segundoNombreTF.getText(), this.apellidoPaternoTF.getText(),
                                               this.apellidoMaternoTF.getText(), this.rfcTF.getText(), this.cargoTF.getText(), this.foto);
             this.le.almacenarEmpleados();
             JOptionPane.showMessageDialog(this, "La edición ha sido exitosa");
