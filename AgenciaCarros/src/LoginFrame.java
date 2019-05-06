@@ -31,13 +31,18 @@ public class LoginFrame extends javax.swing.JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.setAlwaysOnTop(false);
         this.da = DataLoader.loadCompany(new File("CompanyInformation.bin"));
         this.adminLogo = new ImageIcon("isc.png");
         this.nullLogo = new ImageIcon("Null.png");
         
         //Settear logo, predeterminado o de la empresa
         try {
-            this.logoL.setIcon(this.da.getLogo());
+            if(this.da.getLogo() != null) {
+                this.logoL.setIcon(this.da.getLogo());
+            } else {
+                this.logoL.setIcon(nullLogo);
+            }
         } catch (NullPointerException e) {
             this.logoL.setIcon(nullLogo);
         }
@@ -164,7 +169,8 @@ public class LoginFrame extends javax.swing.JFrame {
         //Falta poner la verificacion para la base de datos
         
         //Si los campos estan vacios
-        if(this.usuario.equals("") || this.contrasena.equals("")) {
+        try {
+            if(this.usuario.equals("") || this.contrasena.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese su usuario y / o contraseña");
         //Si ambas entradas son correctas
         } else if((this.usuario.equals(adminMasterUsername) && this.contrasena.equals(adminMasterPassword)) ||
@@ -183,6 +189,10 @@ public class LoginFrame extends javax.swing.JFrame {
         } else if ((this.listaEmpleados.contains(this.usuario) && !this.contrasena.equals(this.listaEmpleados.obtener(this.usuario).getContrasena()))) {
             JOptionPane.showMessageDialog(rootPane, "Contraseña inválida para el usuario ingresado");
         }
+        } catch(NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "No existe archivo de empleados. Por favor ingresar con credenciales de administrador");
+        }
+        
     }//GEN-LAST:event_accederBActionPerformed
 
     public static void main(String args[]) {

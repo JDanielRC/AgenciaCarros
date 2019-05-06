@@ -27,22 +27,21 @@ public class PanelEmpleados extends javax.swing.JPanel {
     public PanelEmpleados() {
         initComponents();
         this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
-        //tablaEmpleados.setcolumn
         this.llenarTabla();
-        tablaEmpleados.setRowHeight(30);
-        tablaEmpleados.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
+        this.tablaEmpleados.setRowHeight(30);
+        this.tablaEmpleados.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
         
         //Settear el CardLayout para administrar paneles variables
-        variableP.setLayout(cardLayout);
+        this.variableP.setLayout(this.cardLayout);
         
         //Crear paneles posibles
         PanelContratar pc = new PanelContratar(this);
         
         //Asignar paneles al CardLayout
-        variableP.add(pc, "contratar");
-        this.cardLayout.show(variableP, "contratar");
+        this.variableP.add(pc, "contratar");
+        this.cardLayout.show(this.variableP, "contratar");
         
-        tablaEmpleados.addMouseListener(new MouseAdapter() {
+        this.tablaEmpleados.addMouseListener(new MouseAdapter() {
         	@Override
             public void mouseClicked(MouseEvent e) {
             	System.out.println(e.getX());
@@ -55,21 +54,21 @@ public class PanelEmpleados extends javax.swing.JPanel {
     }
     
     public void mostrarEditar() {
-        int row = tablaEmpleados.getSelectedRow();
+        int row = this.tablaEmpleados.getSelectedRow();
         try {
-        	empleadoSeleccionado = le.obtener(tablaEmpleados.getValueAt(row, 0).toString());
+        	this.empleadoSeleccionado = this.le.obtener(this.tablaEmpleados.getValueAt(row, 0).toString());
         } catch (NullPointerException e) {
         	casoBase();
         	return;
         }
         PanelEditar pe = new PanelEditar(this, this.empleadoSeleccionado);
-        variableP.add(pe, "editar");
-        cardLayout.show(variableP, "editar");
+        this.variableP.add(pe, "editar");
+        this.cardLayout.show(this.variableP, "editar");
     }
     
     //Llena la tabla con los datos de los empleados de la lista
     private void llenarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) tablaEmpleados.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.tablaEmpleados.getModel();
         System.out.println("La base de datos actualmente cuenta con " + this.le.getSize() + " empleados");
         System.out.println();
         System.out.println("----------------------------------------------------------------");

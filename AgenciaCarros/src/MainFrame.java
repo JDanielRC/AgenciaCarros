@@ -31,7 +31,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.nullLogo = new ImageIcon("Null.png");
         this.cardLayout = new CardLayout();
 
-        this.setAlwaysOnTop(true);
         /*
         this.setFocusable(true);
         super.requestFocus();
@@ -84,14 +83,14 @@ public class MainFrame extends javax.swing.JFrame {
 
             //Settear bienvenida del GUI
             bienvenidaL.setText("Bienvenid@ " + empleadoActual.getPrimerNombre() + " " + empleadoActual.getApellidoPaterno());
-            
+
             //Verifica si el usuario es Gerente
             if(empleadoActual.getCargo().equals("Gerente")) {
                 inventario.setVisible(true);
                 empleados.setVisible(true);
                 editarSistema.setVisible(false);
                 compraVenta.setVisible(true);
-                
+
                 //Verifica si tiene foto
                 ImageIcon fotoEmpleado = empleadoActual.getFoto();
                 if(fotoEmpleado != null) {
@@ -100,14 +99,14 @@ public class MainFrame extends javax.swing.JFrame {
                 } else {
                     fotoUsuarioL.setIcon(nullLogo);
                 }
-                
+
             //Verifica si el usuario es Empledao
             } else {
                 inventario.setVisible(true);
                 empleados.setVisible(false);
                 editarSistema.setVisible(false);
                 compraVenta.setVisible(true);
-                
+
                 //Verifica si tiene foto
                 ImageIcon fotoEmpleado = empleadoActual.getFoto();
                 if(fotoEmpleado != null) {
@@ -117,6 +116,7 @@ public class MainFrame extends javax.swing.JFrame {
                     fotoUsuarioL.setIcon(nullLogo);
                 }
             }  
+
         } 
     }
     

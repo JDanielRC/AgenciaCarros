@@ -10,9 +10,6 @@ import java.io.Serializable;
 
 public class ReporteVenta implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3575569461442192316L;
 	Carro carroVendido;
 	double precio;
