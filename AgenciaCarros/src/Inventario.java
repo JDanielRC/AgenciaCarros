@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 public class Inventario{
 	
 
-	private HashTable<String, Carro> inventario; //almacena la llave como string (modelo) y el valor es un objeto de tipo carro
+	private HashTable<String, Carro> inventario; //almacena la llave como string (placas) y el valor es un objeto de tipo carro
 	private int totalCarros; //almacenar n�mero de carros en almac�n, sin importar modelo
 	
 	public Inventario() { //constructor default, crea un inventario desde cero
@@ -27,7 +27,7 @@ public class Inventario{
 	}
 	
 	public void adquirir(Carro carro) {  //insertamos el carro usando la llave como modelo
-		this.inventario.put(carro.getModelo(), carro);
+		this.inventario.put(carro.getPlacas(), carro);
 		this.totalCarros++;
 	}
 	
@@ -104,15 +104,25 @@ public class Inventario{
             return this.inventario.containsKey(modelo);
         }
         
-    public boolean containsPlaca(String placas) {
-    	Carro[] lista = listaCarros();
-    	for (int i = 0; i < lista.length; i++) {
-    		if (lista[i].getPlacas().equals(placas)) {
-    			return true;
-    		}
-    	}
-    	return false;
-    }
+        public Carro arrojarCarroPorPlacas(String placas) {
+             Carro[] lista = listaCarros();
+            for (int i = 0; i < lista.length; i++) {
+                    if (lista[i].getPlacas().equals(placas)) {
+                            return lista[i];
+                    }
+            }
+            return null;
+        }
+        
+        public boolean containsPlaca(String placas) {
+            Carro[] lista = listaCarros();
+            for (int i = 0; i < lista.length; i++) {
+                    if (lista[i].getPlacas().equals(placas)) {
+                            return true;
+                    }
+            }
+            return false;
+        }
 	
 	public double obtainPrice(String modelo) {
 		return this.inventario.get(modelo).getPrecio();

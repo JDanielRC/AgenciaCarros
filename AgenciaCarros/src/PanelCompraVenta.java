@@ -359,15 +359,16 @@ public class PanelCompraVenta extends javax.swing.JPanel {
         if(placa.equals("")) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese una placa en el cuadro de texto");
         } else if(!this.inventario.containsPlaca(placa)) {
-            JOptionPane.showMessageDialog(this, "El carro con las placas indicadas no existe en el inventario");
+            JOptionPane.showMessageDialog(this, "El carro con las placas indicadas no existe en el inventario");  
         } else {
-            this.llenarRecuadrosVenta(this.inventario.find(placa));
+            this.llenarRecuadrosVenta(this.inventario.arrojarCarroPorPlacas(placa));
             
             if (JOptionPane.showConfirmDialog(this, "Esta seguro de que desea vender el carro seleccionado?", "Vender carro?", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             
                 this.inventario.vender(placa);
                 this.inventario.almacenarDatos();
+                this.inventario = DataLoader.loadInventory(new File("CarDatabase.bin"));
                 this.vaciarRecuadrosVenta();
                 JOptionPane.showMessageDialog(this, "El carro se vendió con éxito!");
             }
@@ -381,11 +382,17 @@ public class PanelCompraVenta extends javax.swing.JPanel {
         } else if(this.inventario.containsPlaca(placaTF.getText())) {
             JOptionPane.showMessageDialog(this, "El inventario ya cuenta con un carro con esa placa. Por favor intente de nuevo");
         } else {
-            Carro carroComprado = new Carro(placaTF.getText(), Integer.parseInt(precioTF.getText()), colorTF.getText(), modeloTF.getText(), tamanoTF.getText(), Integer.parseInt(anoTF.getText()), marcaTF.getText());
-            this.inventario.adquirir(carroComprado);
-            this.inventario.almacenarDatos();
-            this.vaciarRecuadrosCompra();
-            JOptionPane.showMessageDialog(this, "La compra ha sido exitosa");
+            
+            try {
+                Carro carroComprado = new Carro(placaTF.getText(), Integer.parseInt(precioTF.getText()), colorTF.getText(), modeloTF.getText(), tamanoTF.getText(), Integer.parseInt(anoTF.getText()), marcaTF.getText());
+                this.inventario.adquirir(carroComprado);
+                this.inventario.almacenarDatos();
+                this.inventario = DataLoader.loadInventory(new File("CarDatabase.bin"));
+                this.vaciarRecuadrosCompra();
+                JOptionPane.showMessageDialog(this, "La compra ha sido exitosa");
+            } catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido en las secciones de año y precio");
+            }
         }
     }//GEN-LAST:event_comprarBActionPerformed
 

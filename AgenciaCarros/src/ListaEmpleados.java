@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class ListaEmpleados {
 	
@@ -70,7 +71,12 @@ public class ListaEmpleados {
 	}
         
         public boolean contains(String matricula) {
-            return this.listaEmpleados.containsKey(matricula);
+            try {
+                return this.listaEmpleados.containsKey(matricula);
+            } catch(NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "No existe archivo de empleados. Por favor ingresar con credenciales de administrador");
+            }
+            return false;
         }
         
         public void modificarEmpleado(String matriculaVieja, String matricula, String contrasena, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,

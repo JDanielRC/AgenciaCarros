@@ -31,7 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.nullLogo = new ImageIcon("Null.png");
         this.cardLayout = new CardLayout();
 
-        //this.setAlwaysOnTop(true);
+        this.setAlwaysOnTop(true);
         /*
         this.setFocusable(true);
         super.requestFocus();
