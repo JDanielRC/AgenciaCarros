@@ -106,7 +106,7 @@ public class MainFrame extends javax.swing.JFrame {
                 inventario.setVisible(true);
                 empleados.setVisible(false);
                 editarSistema.setVisible(false);
-                compraVenta.setVisible(false);
+                compraVenta.setVisible(true);
                 
                 //Verifica si tiene foto
                 ImageIcon fotoEmpleado = empleadoActual.getFoto();
