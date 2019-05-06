@@ -1,3 +1,11 @@
+//Autores:
+//Carlos Ernesto Lopez Solano A01633683
+//Juan Daniel Rubio Camacho A01633924
+//Nombre de la clase: Carro.java
+//Fecha: 05/05/2019
+//Comentarios u observaciones.
+//------------------------------------------------------------------------------
+
 import java.io.Serializable;
 
 public class Carro implements Serializable {
@@ -14,7 +22,6 @@ public class Carro implements Serializable {
 		this.size = size;
 		this.year = year;
 		this.marca = marca;
-		this.placas = placas;
 	}
         
         public String getPlaca() {
@@ -73,13 +80,6 @@ public class Carro implements Serializable {
 		this.marca = marca;
 	}
 
-	public String getPlacas() {
-		return placas;
-	}
-
-	public void setPlacas(String placas) {
-		this.placas = placas;
-	}
 	
 }
 

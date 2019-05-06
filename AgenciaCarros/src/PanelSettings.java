@@ -1,3 +1,11 @@
+//Autores:
+//Carlos Ernesto Lopez Solano A01633683
+//Juan Daniel Rubio Camacho A01633924
+//Nombre de la clase: PanelSettings.java
+//Fecha: 05/05/2019
+//Comentarios u observaciones.
+//------------------------------------------------------------------------------
+
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -17,7 +25,7 @@ public class PanelSettings extends javax.swing.JPanel {
     
     public PanelSettings() {
         initComponents();
-        this.da = DataLoader.loadCompany(new File("CompanyInformation.bin"));
+        this.da = new DatosEmpresa();
         this.logoNuevo = null;
         this.llenarRecuadros();
     }
