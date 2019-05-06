@@ -270,7 +270,7 @@ public class PanelContratar extends javax.swing.JPanel {
         if(choosed == JFileChooser.APPROVE_OPTION) {
             try {
                 BufferedImage fotin = ImageIO.read(chooser.getSelectedFile());
-                Image img = fotin.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+                Image img = fotin.getScaledInstance(150, 30, Image.SCALE_SMOOTH);
                 this.foto = new ImageIcon(img);
             } catch(IOException ex) {
                 System.out.println("El archivo no pudo ser leido correctamente");
