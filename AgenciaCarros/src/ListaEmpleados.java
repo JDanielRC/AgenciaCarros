@@ -77,7 +77,7 @@ public class ListaEmpleados {
                                       String rfc, String cargo, ImageIcon foto) {
             Empleado temporal = this.listaEmpleados.get(matricula);
             temporal.setMatricula(matricula);
-            temporal.setMatricula(matricula);
+            temporal.setContrasena(contrasena);
             temporal.setPrimerNombre(primerNombre);
             temporal.setSegundoNombre(segundoNombre);
             temporal.setApellidoPaterno(apellidoPaterno);

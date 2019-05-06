@@ -24,6 +24,7 @@ public class PanelInventario extends javax.swing.JPanel {
         this.llenarTabla(this.inventario.listaCarros());
         tablaInventario.setRowHeight(30);
         tablaInventario.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
+        this.actualizarTabla();
     }
     
     //Llena la tabla con los datos del inventario que se le pasa
@@ -44,9 +45,10 @@ public class PanelInventario extends javax.swing.JPanel {
         }
     }
     
-
-    private void reacomodarTabla() {
-        
+    public void actualizarTabla() {
+        ((DefaultTableModel)tablaInventario.getModel()).setRowCount(0);
+        this.inventario = DataLoader.loadInventory(new File("CarDatabase.bin"));
+        this.llenarTabla(this.inventario.listaCarros());
     }
     
     //Busca el modelo especificado en el inventario actual
@@ -81,6 +83,7 @@ public class PanelInventario extends javax.swing.JPanel {
         inventarioL = new javax.swing.JLabel();
         buscarTF = new javax.swing.JTextField();
         buscarB = new javax.swing.JButton();
+        actualizarB = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1231, 1000));
         setMinimumSize(new java.awt.Dimension(1231, 1000));
@@ -125,6 +128,14 @@ public class PanelInventario extends javax.swing.JPanel {
             }
         });
 
+        actualizarB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        actualizarB.setText("Actualizar");
+        actualizarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,6 +145,8 @@ public class PanelInventario extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addComponent(inventarioL, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(actualizarB, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(buscarB, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buscarTF, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,7 +163,8 @@ public class PanelInventario extends javax.swing.JPanel {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buscarTF))))
+                            .addComponent(buscarTF)
+                            .addComponent(actualizarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -161,8 +175,13 @@ public class PanelInventario extends javax.swing.JPanel {
         this.llenarTabla(this.buscarEnTabla(buscarTF.getText()));
     }//GEN-LAST:event_buscarBActionPerformed
 
+    private void actualizarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBActionPerformed
+        this.actualizarTabla();
+    }//GEN-LAST:event_actualizarBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizarB;
     private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.JLabel inventarioL;
