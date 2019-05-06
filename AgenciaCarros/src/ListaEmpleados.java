@@ -73,9 +73,9 @@ public class ListaEmpleados {
             return this.listaEmpleados.containsKey(matricula);
         }
         
-        public void modificarEmpleado(String matricula, String contrasena, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
+        public void modificarEmpleado(String matriculaVieja, String matricula, String contrasena, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
                                       String rfc, String cargo, ImageIcon foto) {
-            Empleado temporal = this.listaEmpleados.get(matricula);
+            Empleado temporal = this.listaEmpleados.get(matriculaVieja);
             temporal.setMatricula(matricula);
             temporal.setContrasena(contrasena);
             temporal.setPrimerNombre(primerNombre);
@@ -85,7 +85,7 @@ public class ListaEmpleados {
             temporal.setRfc(rfc);
             temporal.setCargo(cargo);
             temporal.setFoto(foto);
-            this.listaEmpleados.delete(matricula);
+            this.listaEmpleados.delete(matriculaVieja);
             this.listaEmpleados.put(matricula, temporal);
         }
 	
