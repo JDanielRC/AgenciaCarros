@@ -36,7 +36,7 @@ public class PanelSettings extends javax.swing.JPanel {
         
         try {
             this.nombreEmpresaTF.setText(this.da.getNombre());
-            this.archivoL.setText(this.da.getLogo().toString());
+            this.archivoL.setText("Seleccionar");
             this.rfcTF.setText(this.da.getRFC());
             this.direccionTF.setText(this.da.getDireccion());
         } catch (NullPointerException e) {

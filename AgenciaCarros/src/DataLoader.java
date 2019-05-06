@@ -164,6 +164,7 @@ public class DataLoader {
 		try {
 			fs = new FileOutputStream("CompanyInformation.bin");
 			os = new ObjectOutputStream(fs);
+			os.writeObject(new DatosEmpresa());
 			os.close();
 			fs.close();
 		} catch (IOException e) {
