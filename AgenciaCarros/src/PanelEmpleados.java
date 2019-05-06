@@ -3,7 +3,11 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class PanelEmpleados extends javax.swing.JPanel {
@@ -31,7 +35,9 @@ public class PanelEmpleados extends javax.swing.JPanel {
         this.cardLayout.show(variableP, "contratar");
         
         tablaEmpleados.addMouseListener(new MouseAdapter() {
-            public void MouseClicked(MouseEvent e) {
+        	@Override
+            public void mouseClicked(MouseEvent e) {
+            	System.out.println(e.getX());
                 System.out.println(190);
                 if(e.getButton() == MouseEvent.BUTTON1) {
                     mostrarEditar();  
@@ -42,8 +48,13 @@ public class PanelEmpleados extends javax.swing.JPanel {
     
     public void mostrarEditar() {
         int row = tablaEmpleados.getSelectedRow();
-        empleadoSeleccionado = le.obtener(tablaEmpleados.getValueAt(row, 0).toString());
-        PanelEditar pe = new PanelEditar(this,this.empleadoSeleccionado);
+        try {
+        	empleadoSeleccionado = le.obtener(tablaEmpleados.getValueAt(row, 0).toString());
+        } catch (NullPointerException e) {
+        	casoBase();
+        	return;
+        }
+        PanelEditar pe = new PanelEditar(this, this.empleadoSeleccionado);
         variableP.add(pe, "editar");
         cardLayout.show(variableP, "editar");
     }
@@ -141,7 +152,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, ImageIcon.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
@@ -244,4 +255,5 @@ public class PanelEmpleados extends javax.swing.JPanel {
     private javax.swing.JTable tablaEmpleados;
     private javax.swing.JPanel variableP;
     // End of variables declaration//GEN-END:variables
+
 }
