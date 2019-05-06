@@ -1,5 +1,6 @@
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -27,15 +28,19 @@ public class PanelEditar extends javax.swing.JPanel {
     }
     
     public void llenarCampos(Empleado empleado) {
-        this.empleadoSeleccionado = empleado;
-        primerNombreTF.setText(empleado.getPrimerNombre());
-        segundoNombreTF.setText(empleado.getSegundoNombre());
-        apellidoPaternoTF.setText(empleado.getApellidoPaterno());
-        apellidoMaternoTF.setText(empleado.getApellidoMaterno());
-        rfcTF.setText(empleado.getRfc());
-        cargoTF.setText(empleado.getCargo());
-        this.foto = empleado.getFoto();
-        archivoL.setText(this.foto.toString());
+        try {
+        	this.empleadoSeleccionado = empleado;
+            primerNombreTF.setText(empleado.getPrimerNombre());
+            segundoNombreTF.setText(empleado.getSegundoNombre());
+            apellidoPaternoTF.setText(empleado.getApellidoPaterno());
+            apellidoMaternoTF.setText(empleado.getApellidoMaterno());
+            rfcTF.setText(empleado.getRfc());
+            cargoTF.setText(empleado.getCargo());
+            this.foto = empleado.getFoto();
+            archivoL.setText(this.foto.toString());
+        } catch(NullPointerException e) {
+        	
+        }
     }
 
     /**
@@ -239,7 +244,9 @@ public class PanelEditar extends javax.swing.JPanel {
         int choosed = chooser.showOpenDialog(null);
         if(choosed == JFileChooser.APPROVE_OPTION) {
             try {
-                this.foto = new ImageIcon(ImageIO.read(chooser.getSelectedFile()));
+            	BufferedImage fotin = ImageIO.read(chooser.getSelectedFile());
+                Image img = fotin.getScaledInstance(150, 30, Image.SCALE_SMOOTH);
+                this.foto = new ImageIcon(img);
             } catch(IOException ex) {
                 System.out.println("El archivo no pudo ser leido correctamente");
             }
