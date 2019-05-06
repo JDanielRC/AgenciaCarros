@@ -72,8 +72,8 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 }
         }
 
-        if(modelo.getRowCount() < 14) {
-            for(int i = 0; i < 14 - modelo.getRowCount(); i++) {
+        if(modelo.getRowCount() < 21) {
+            for(int i = 0; i < 21 - modelo.getRowCount(); i++) {
                 modelo.addRow(new Object[8]);
             }
         }
@@ -89,26 +89,6 @@ public class PanelEmpleados extends javax.swing.JPanel {
         this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         this.llenarTabla();
     }
-    
-    /* Falta implementar busqueda
-    //Busca el modelo especificado en el inventario actual
-    //Si lo encuentra, devuelve una lista de carros lista para ser procesada
-    //Sino lo encuentra, o el modelo esta vacio/es nulo, devuelve la lista
-    //de carros del inventario actual
-    private Carro[] buscarEnTabla(String modelo) {
-        //Corroborar que no sea un texto vacio o nulo
-        if(modelo != "" && modelo != null) {
-            if(this.inventario.containsModelo(modelo)) {
-                return this.inventario.listaCarrosPorModelo(modelo);
-            }
-            JOptionPane.showMessageDialog(this, "No se cuenta con el modelo especificado actualmente");
-            return this.inventario.listaCarros();
-        }
-        //Si no se ingresa texto y se presiona el boton
-        //Se realiza el llenado normal de la tabla
-        return this.inventario.listaCarros();
-    }
-    */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -122,8 +102,6 @@ public class PanelEmpleados extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEmpleados = new javax.swing.JTable();
         empleadosL = new javax.swing.JLabel();
-        buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JButton();
         variableP = new javax.swing.JPanel();
         reloadB = new javax.swing.JButton();
 
@@ -160,16 +138,6 @@ public class PanelEmpleados extends javax.swing.JPanel {
         empleadosL.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         empleadosL.setText("Empleados");
 
-        buscarTF.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-
-        buscarB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        buscarB.setText("Buscar");
-        buscarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout variablePLayout = new javax.swing.GroupLayout(variableP);
         variableP.setLayout(variablePLayout);
         variablePLayout.setHorizontalGroup(
@@ -199,36 +167,26 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 .addComponent(empleadosL, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(reloadB)
-                .addGap(34, 34, 34)
-                .addComponent(buscarB, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buscarTF, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
             .addComponent(variableP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscarTF)
-                            .addComponent(buscarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reloadB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(empleadosL, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
+                        .addComponent(empleadosL, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(reloadB, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(variableP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
-        //((DefaultTableModel)tablaEmpleados.getModel()).setRowCount(0);
-        //this.llenarTabla(this.buscarEnTabla(buscarTF.getText()));
-    }//GEN-LAST:event_buscarBActionPerformed
 
     private void reloadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadBActionPerformed
         this.actualizarTabla();
@@ -236,8 +194,6 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buscarB;
-    private javax.swing.JTextField buscarTF;
     private javax.swing.JLabel empleadosL;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton reloadB;

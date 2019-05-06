@@ -33,10 +33,7 @@
               <Component id="empleadosL" min="-2" pref="286" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="reloadB" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="buscarB" min="-2" pref="118" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="buscarTF" min="-2" pref="296" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
           <Component id="variableP" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -44,21 +41,18 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buscarTF" max="32767" attributes="0"/>
-                          <Component id="buscarB" max="32767" attributes="0"/>
-                          <Component id="reloadB" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="empleadosL" min="-2" pref="67" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="reloadB" min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="443" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="variableP" min="-2" max="-2" attributes="0"/>
@@ -149,24 +143,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Empleados"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="buscarTF">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="24" style="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="buscarB">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="24" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarBActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="variableP">
 

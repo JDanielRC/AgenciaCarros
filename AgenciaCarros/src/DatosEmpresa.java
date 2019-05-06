@@ -11,6 +11,13 @@ public class DatosEmpresa implements Serializable {
 	private String RFC, direccion, nombre;
 	private ImageIcon logo;
 	
+        public DatosEmpresa() {
+            this.nombre = "";
+            this.logo = null;
+            this.direccion = "";
+            this.RFC = "";
+        }
+        
 	public DatosEmpresa(String RFC, String direccion, String nombre, ImageIcon logo) {
 		this.RFC = RFC;
 		this.direccion = direccion;

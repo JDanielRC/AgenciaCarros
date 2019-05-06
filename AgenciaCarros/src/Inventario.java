@@ -15,7 +15,7 @@ public class Inventario{
 	}
 	
 	public Carro vender(String llave) {  //se borra el carro y lo regresamos, entonces ya de ahi pueden obtener precios etc.
-		return this.inventario.deleteQueue(llave);
+		return this.inventario.delete(llave);
 	}
 	
 	public void adquirir(Carro carro) {  //insertamos el carro usando la llave como modelo

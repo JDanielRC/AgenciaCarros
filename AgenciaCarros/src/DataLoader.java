@@ -52,7 +52,10 @@ public class DataLoader {
 			return lista;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			
+			System.out.println("No se encontro archivo con el reporte de compras. Se creará uno vacio");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------");
+                        DataLoader.createEmptyListaCompras();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,7 +80,10 @@ public class DataLoader {
 			return lista;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			
+			System.out.println("No se encontro archivo con reporte de ventas. Se creará uno vacio");
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------");
+                        DataLoader.createEmptyListaVentas();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,10 +135,10 @@ public class DataLoader {
 			return company;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-                        System.out.println("No se encontro archivo con empleados. Se creará uno vacio");
+                        System.out.println("No se encontro archivo de empresa. Se creará uno vacio");
                         System.out.println();
                         System.out.println("---------------------------------------------------------");
-                        DataLoader.createEmptyEmployeesFile();
+                        DataLoader.createEmptyCompanyFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

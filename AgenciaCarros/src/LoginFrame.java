@@ -13,6 +13,7 @@ public class LoginFrame extends javax.swing.JFrame {
                          adminMasterPassword = "pitayo";
     
     private ListaEmpleados listaEmpleados;
+    private DatosEmpresa da;
     
     private ImageIcon adminLogo = new ImageIcon("isc.png");
     private ImageIcon nullLogo = new ImageIcon("Null.png");
@@ -23,15 +24,16 @@ public class LoginFrame extends javax.swing.JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.da = DataLoader.loadCompany(new File("CompanyInformation.bin"));
         
         //Settear logo, predeterminado o de la empresa
-        //Verifica si existe algun logo almacenado (falta implementar)
-        if(true) {
-            logoL.setIcon(nullLogo);
-            //Sino, setea uno estandar
-        } else {
+        try {
+            logoL.setIcon(this.da.getLogo());
+        } catch (NullPointerException e) {
             logoL.setIcon(nullLogo);
         }
+            
+            
         this.usuario = this.contrasena = "";
         this.revisarBD();
     }

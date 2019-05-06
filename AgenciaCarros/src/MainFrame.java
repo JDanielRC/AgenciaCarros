@@ -20,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(String matricula) {
         super("Venta y compra de carros - " + matricula);
         initComponents();
+
         //this.setAlwaysOnTop(true);
         /*
         this.setFocusable(true);
@@ -32,21 +33,19 @@ public class MainFrame extends javax.swing.JFrame {
         variableP.setLayout(cardLayout);
         
         //Crear paneles posibles
-        PanelResumen pr = new PanelResumen();
         PanelInventario pi = new PanelInventario();
         PanelEmpleados pe = new PanelEmpleados();
         PanelSettings ps = new PanelSettings();
         PanelCompraVenta pcv = new PanelCompraVenta();
         
         //Asignar paneles al CardLayout
-        variableP.add(pr, "resumen");
         variableP.add(pi, "inventario");
         variableP.add(pe, "empleados");
         variableP.add(ps, "settings");
         variableP.add(pcv, "compraVenta");
           
         //Resumen esta selecionado por defecto
-        resumen.setSelected(true);
+        inventario.setSelected(true);
         //Settear fecha del acceso actual
         Date fecha = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");  
@@ -58,7 +57,6 @@ public class MainFrame extends javax.swing.JFrame {
         if(matricula.equals("harnex")) {      
             fotoUsuarioL.setIcon(adminLogo);
 
-            resumen.setVisible(true);
             inventario.setVisible(true);
             empleados.setVisible(true);
             editarSistema.setVisible(true);
@@ -79,7 +77,6 @@ public class MainFrame extends javax.swing.JFrame {
             
             //Verifica si el usuario es Gerente
             if(empleadoActual.getCargo().equals("Gerente")) {
-                resumen.setVisible(true);
                 inventario.setVisible(true);
                 empleados.setVisible(true);
                 editarSistema.setVisible(false);
@@ -96,7 +93,6 @@ public class MainFrame extends javax.swing.JFrame {
                 
             //Verifica si el usuario es Empledao
             } else {
-                resumen.setVisible(true);
                 inventario.setVisible(true);
                 empleados.setVisible(false);
                 editarSistema.setVisible(false);
@@ -130,7 +126,6 @@ public class MainFrame extends javax.swing.JFrame {
         fotoUsuarioL = new javax.swing.JLabel();
         bienvenidaL = new javax.swing.JLabel();
         accesoActualL = new javax.swing.JLabel();
-        resumen = new javax.swing.JRadioButton();
         inventario = new javax.swing.JRadioButton();
         empleados = new javax.swing.JRadioButton();
         editarSistema = new javax.swing.JRadioButton();
@@ -164,15 +159,6 @@ public class MainFrame extends javax.swing.JFrame {
         accesoActualL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         accesoActualL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         accesoActualL.setText("jLabel2");
-
-        menuSeleccionBG.add(resumen);
-        resumen.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        resumen.setText("Resumen");
-        resumen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resumenActionPerformed(evt);
-            }
-        });
 
         menuSeleccionBG.add(inventario);
         inventario.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -244,9 +230,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuPLayout.createSequentialGroup()
-                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(resumen)
-                            .addComponent(inventario))
+                        .addComponent(inventario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuPLayout.createSequentialGroup()
                         .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +253,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(accesoActualL)
                 .addGap(18, 18, 18)
                 .addComponent(fechaActualL)
-                .addGap(18, 18, 18)
-                .addComponent(resumen)
-                .addGap(18, 18, 18)
+                .addGap(89, 89, 89)
                 .addComponent(inventario)
                 .addGap(18, 18, 18)
                 .addComponent(empleados)
@@ -281,7 +263,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(compraVenta)
                 .addGap(89, 89, 89)
                 .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         variableP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -340,10 +322,6 @@ public class MainFrame extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_cerrarSesionActionPerformed
-
-    private void resumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumenActionPerformed
-        cardLayout.show(variableP, "resumen");
-    }//GEN-LAST:event_resumenActionPerformed
 
     private void empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleadosActionPerformed
         cardLayout.show(variableP, "empleados");
@@ -407,7 +385,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton inventario;
     private javax.swing.JPanel menuP;
     private javax.swing.ButtonGroup menuSeleccionBG;
-    private javax.swing.JRadioButton resumen;
     private javax.swing.JPanel variableP;
     // End of variables declaration//GEN-END:variables
 }
