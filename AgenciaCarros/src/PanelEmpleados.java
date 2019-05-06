@@ -91,8 +91,8 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 }
         }
 
-        if(modelo.getRowCount() < 21) {
-            for(int i = 0; i < 21 - modelo.getRowCount(); i++) {
+        if(modelo.getRowCount() < 3) {
+            for(int i = 0; i < 3 - modelo.getRowCount(); i++) {
                 modelo.addRow(new Object[8]);
             }
         }
@@ -139,7 +139,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, ImageIcon.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
