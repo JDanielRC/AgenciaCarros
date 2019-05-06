@@ -6,6 +6,7 @@
 //Comentarios u observaciones.
 //------------------------------------------------------------------------------
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -115,8 +116,10 @@ public class ListaEmpleados {
 	}
 	
 	public static void main(String[] args) {
-		/*ListaEmpleados lista = new ListaEmpleados();
-		Empleado pedrito = new Empleado("Pedro", "D�az", "P�rez", "PDP19374", "Empleado");
+		ListaEmpleados lista = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
+		System.out.println(lista.getSize());
+		lista.obtener("A0100");
+		/*Empleado pedrito = new Empleado("Pedro", "D�az", "P�rez", "PDP19374", "Empleado");
 		Empleado alfredito = new Empleado("Alfredo", "Mart�nez", "L�pez", "AML09857", "Empleado");
 		Empleado hugo = new Empleado("Hugo", "Masharelli", "Rocha", "HMR12455", "Gerente");
 		lista.contratar(pedrito);

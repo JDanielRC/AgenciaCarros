@@ -79,7 +79,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             
             //Adquirir referencia al empleado actual
-            ListaEmpleados le = DataLoader.loadEmployees(new File("Database.bin"));
+            ListaEmpleados le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
             Empleado empleadoActual = le.obtener(matricula);
 
             //Settear bienvenida del GUI
