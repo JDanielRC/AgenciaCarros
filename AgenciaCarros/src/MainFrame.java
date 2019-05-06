@@ -160,6 +160,9 @@ public class MainFrame extends javax.swing.JFrame {
         menuP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         fotoUsuarioL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fotoUsuarioL.setMaximumSize(new java.awt.Dimension(200, 200));
+        fotoUsuarioL.setMinimumSize(new java.awt.Dimension(200, 200));
+        fotoUsuarioL.setPreferredSize(new java.awt.Dimension(200, 200));
 
         bienvenidaL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         bienvenidaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -221,15 +224,6 @@ public class MainFrame extends javax.swing.JFrame {
         menuPLayout.setHorizontalGroup(
             menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPLayout.createSequentialGroup()
-                .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bienvenidaL)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(menuPLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(accesoActualL)
@@ -244,19 +238,25 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(menuPLayout.createSequentialGroup()
                         .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(compraVenta)
-                            .addComponent(empleados)
                             .addComponent(editarSistema)
                             .addGroup(menuPLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(empleados)))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(menuPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bienvenidaL)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuPLayout.setVerticalGroup(
             menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addGap(56, 56, 56)
+                .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addComponent(bienvenidaL)
                 .addGap(28, 28, 28)
                 .addComponent(accesoActualL)

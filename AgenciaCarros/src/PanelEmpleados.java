@@ -138,7 +138,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, ImageIcon.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
@@ -152,6 +152,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaEmpleados.setRowHeight(40);
         jScrollPane2.setViewportView(tablaEmpleados);
 
         empleadosL.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N

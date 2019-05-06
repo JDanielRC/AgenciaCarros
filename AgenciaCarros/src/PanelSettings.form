@@ -82,14 +82,13 @@
                           <Component id="logoL" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="archivoL" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="selectB" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="settingsL" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rfcTF" alignment="3" max="32767" attributes="0"/>

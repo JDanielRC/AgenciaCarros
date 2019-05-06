@@ -226,12 +226,13 @@ public class PanelContratar extends javax.swing.JPanel {
                             .addComponent(matriculaL)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(contrasenaL)
-                            .addComponent(contrasenaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(apellidoMaternoL)
-                                .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(contrasenaL)
+                                .addComponent(contrasenaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(36, 36, 36)
                         .addComponent(contratarB)))
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -269,7 +270,7 @@ public class PanelContratar extends javax.swing.JPanel {
         if(choosed == JFileChooser.APPROVE_OPTION) {
             try {
                 BufferedImage fotin = ImageIO.read(chooser.getSelectedFile());
-                Image img = fotin.getScaledInstance(150, 30, Image.SCALE_SMOOTH);
+                Image img = fotin.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
                 this.foto = new ImageIcon(img);
             } catch(IOException ex) {
                 System.out.println("El archivo no pudo ser leido correctamente");

@@ -72,9 +72,11 @@ public class ListaEmpleados {
             return this.listaEmpleados.containsKey(matricula);
         }
         
-        public void modificarEmpleado(String matricula, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
+        public void modificarEmpleado(String matricula, String contrasena, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno,
                                       String rfc, String cargo, ImageIcon foto) {
             Empleado temporal = this.listaEmpleados.get(matricula);
+            temporal.setMatricula(matricula);
+            temporal.setMatricula(matricula);
             temporal.setPrimerNombre(primerNombre);
             temporal.setSegundoNombre(segundoNombre);
             temporal.setApellidoPaterno(apellidoPaterno);
