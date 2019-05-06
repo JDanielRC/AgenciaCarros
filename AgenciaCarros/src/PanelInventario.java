@@ -35,7 +35,7 @@ public class PanelInventario extends javax.swing.JPanel {
         NumberFormat format = NumberFormat.getCurrencyInstance(Locale.US);
 
         for(Carro vehiculo : carros) {
-                modelo.addRow(new Object[]{vehiculo.getModelo(), vehiculo.getMarca(), vehiculo.getYear(), vehiculo.getColor(), vehiculo.getSize(), format.format(vehiculo.getPrecio())});
+                modelo.addRow(new Object[]{vehiculo.getPlacas(), vehiculo.getModelo(), vehiculo.getMarca(), vehiculo.getYear(), vehiculo.getColor(), vehiculo.getSize(), format.format(vehiculo.getPrecio())});
         }
         
         if(carros.length < 27) {
@@ -95,14 +95,14 @@ public class PanelInventario extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Modelo", "Marca", "Año", "Color", "Tamaño", "Precio"
+                "Placas", "Modelo", "Marca", "Año", "Color", "Tamaño", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
