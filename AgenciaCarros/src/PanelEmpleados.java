@@ -28,7 +28,9 @@ public class PanelEmpleados extends javax.swing.JPanel {
         initComponents();
         this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         this.llenarTabla();
-        this.tablaEmpleados.setRowHeight(30);
+        this.tablaEmpleados.setRowHeight(150);
+        int contar = this.tablaEmpleados.getColumnModel().getColumnCount();
+        this.tablaEmpleados.getColumnModel().getColumn(contar-1).setPreferredWidth(160);
         this.tablaEmpleados.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 24));
         
         //Settear el CardLayout para administrar paneles variables
@@ -133,11 +135,11 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Matrícula", "Primer Nombre", "Segundo Nombre", "Apellido Paterno", "Apellido Materno", "Cargo", "RFC", "Foto"
+                "Matrícula", "P. Nombre", "S. Nombre", "Apellido P.", "Apellido M.", "Cargo", "RFC", "Foto"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, ImageIcon.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false

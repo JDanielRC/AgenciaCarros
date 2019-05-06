@@ -129,6 +129,7 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         menuSeleccionBG = new javax.swing.ButtonGroup();
         menuP = new javax.swing.JPanel();
@@ -158,19 +159,39 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         menuP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        menuP.setLayout(new java.awt.GridBagLayout());
 
         fotoUsuarioL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fotoUsuarioL.setMaximumSize(new java.awt.Dimension(200, 200));
         fotoUsuarioL.setMinimumSize(new java.awt.Dimension(200, 200));
         fotoUsuarioL.setPreferredSize(new java.awt.Dimension(200, 200));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(57, 48, 0, 0);
+        menuP.add(fotoUsuarioL, gridBagConstraints);
 
         bienvenidaL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         bienvenidaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bienvenidaL.setText("jLabel1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(61, 27, 0, 0);
+        menuP.add(bienvenidaL, gridBagConstraints);
 
         accesoActualL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         accesoActualL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         accesoActualL.setText("jLabel2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 27, 0, 0);
+        menuP.add(accesoActualL, gridBagConstraints);
 
         menuSeleccionBG.add(inventario);
         inventario.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -180,6 +201,13 @@ public class MainFrame extends javax.swing.JFrame {
                 inventarioActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(89, 27, 0, 0);
+        menuP.add(inventario, gridBagConstraints);
 
         menuSeleccionBG.add(empleados);
         empleados.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -189,6 +217,13 @@ public class MainFrame extends javax.swing.JFrame {
                 empleadosActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 27, 0, 0);
+        menuP.add(empleados, gridBagConstraints);
 
         menuSeleccionBG.add(editarSistema);
         editarSistema.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -198,6 +233,13 @@ public class MainFrame extends javax.swing.JFrame {
                 editarSistemaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 27, 0, 9);
+        menuP.add(editarSistema, gridBagConstraints);
 
         menuSeleccionBG.add(compraVenta);
         compraVenta.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -207,9 +249,22 @@ public class MainFrame extends javax.swing.JFrame {
                 compraVentaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 27, 0, 0);
+        menuP.add(compraVenta, gridBagConstraints);
 
         fechaActualL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         fechaActualL.setText("jLabel1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 27, 0, 0);
+        menuP.add(fechaActualL, gridBagConstraints);
 
         cerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         cerrarSesion.setText("Cerrar Sesion");
@@ -218,63 +273,15 @@ public class MainFrame extends javax.swing.JFrame {
                 cerrarSesionActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout menuPLayout = new javax.swing.GroupLayout(menuP);
-        menuP.setLayout(menuPLayout);
-        menuPLayout.setHorizontalGroup(
-            menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bienvenidaL)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(menuPLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addComponent(inventario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(compraVenta)
-                    .addComponent(editarSistema)
-                    .addComponent(empleados))
-                .addContainerGap())
-            .addGroup(menuPLayout.createSequentialGroup()
-                .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(accesoActualL)
-                            .addComponent(fechaActualL)))
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuPLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        menuPLayout.setVerticalGroup(
-            menuPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(fotoUsuarioL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(bienvenidaL)
-                .addGap(28, 28, 28)
-                .addComponent(accesoActualL)
-                .addGap(18, 18, 18)
-                .addComponent(fechaActualL)
-                .addGap(89, 89, 89)
-                .addComponent(inventario)
-                .addGap(18, 18, 18)
-                .addComponent(empleados)
-                .addGap(18, 18, 18)
-                .addComponent(editarSistema)
-                .addGap(18, 18, 18)
-                .addComponent(compraVenta)
-                .addGap(89, 89, 89)
-                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 8;
+        gridBagConstraints.ipady = 25;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(134, 53, 44, 0);
+        menuP.add(cerrarSesion, gridBagConstraints);
 
         variableP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -286,7 +293,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         variablePLayout.setVerticalGroup(
             variablePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 998, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -76,10 +76,10 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="8" rowCount="0">
                 <Column editable="false" title="Matr&#xed;cula" type="java.lang.String"/>
-                <Column editable="false" title="Primer Nombre" type="java.lang.String"/>
-                <Column editable="false" title="Segundo Nombre" type="java.lang.String"/>
-                <Column editable="false" title="Apellido Paterno" type="java.lang.String"/>
-                <Column editable="false" title="Apellido Materno" type="java.lang.String"/>
+                <Column editable="false" title="P. Nombre" type="java.lang.String"/>
+                <Column editable="false" title="S. Nombre" type="java.lang.String"/>
+                <Column editable="false" title="Apellido P." type="java.lang.String"/>
+                <Column editable="false" title="Apellido M." type="java.lang.String"/>
                 <Column editable="false" title="Cargo" type="java.lang.String"/>
                 <Column editable="false" title="RFC" type="java.lang.String"/>
                 <Column editable="false" title="Foto" type="java.lang.Object"/>
