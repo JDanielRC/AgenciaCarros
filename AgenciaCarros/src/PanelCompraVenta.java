@@ -373,7 +373,7 @@ public class PanelCompraVenta extends javax.swing.JPanel {
         
         if(placa.equals("")) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese una placa en el cuadro de texto");
-        } else if(!this.inventario.contains(placa)) {
+        } else if(!this.inventario.containsModelo(placa)) {
             JOptionPane.showMessageDialog(this, "El carro con las placas indicadas no existe en el inventario");
         } else {
             this.llenarRecuadrosVenta(this.inventario.find(placa));

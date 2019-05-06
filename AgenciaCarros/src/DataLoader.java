@@ -113,6 +113,7 @@ public class DataLoader {
 				b.contratar(employee);
 			}
 			os.close();
+			System.out.println(b.getSize());
 			return b;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

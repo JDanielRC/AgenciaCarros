@@ -213,7 +213,7 @@ public class PanelContratar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void contratarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarBActionPerformed
-        
+        this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         if(primerNombreTF.getText().equals("") || apellidoPaternoTF.getText().equals("") || apellidoMaternoTF.getText().equals("") ||
            rfcTF.getText().equals("") || cargoTF.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Todos los espacios son obligatorios excepto Segundo Nombre y Foto");
@@ -222,16 +222,18 @@ public class PanelContratar extends javax.swing.JPanel {
         } else {
             Empleado nuevoEmpleado = new Empleado(primerNombreTF.getText(), segundoNombreTF.getText(), apellidoPaternoTF.getText(),
                                               apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), this.foto);
+            nuevoEmpleado.generaMatricula(le);
             this.le.contratar(nuevoEmpleado);
             this.le.almacenarEmpleados();
             this.vaciarCampos();
             this.foto = null;
-            this.pe.actualizarTabla();
             JOptionPane.showMessageDialog(this, "La contratación ha sido exitosa");
+            this.pe.actualizarTabla();
         }
     }//GEN-LAST:event_contratarBActionPerformed
 
     private void selectFotoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFotoBActionPerformed
+    	this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(new FileNameExtensionFilter("JPG, GIF and PNG Images", "jpg", "gif", "png"));
         int choosed = chooser.showOpenDialog(null);
