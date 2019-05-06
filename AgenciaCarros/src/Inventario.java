@@ -103,7 +103,7 @@ public class Inventario{
         public boolean containsModelo(String modelo) {
             return this.inventario.containsKey(modelo);
         }
-	
+        
 	public double obtainPrice(String modelo) {
 		return this.inventario.get(modelo).getPrecio();
 	}

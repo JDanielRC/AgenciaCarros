@@ -38,6 +38,8 @@ public class PanelContratar extends javax.swing.JPanel {
         rfcTF.setText("");
         cargoTF.setText("");
         archivoL.setText("Seleccionar");
+        matriculaTF.setText("");
+        contrasenaTF.setText("");
     }
 
     /**
@@ -66,6 +68,10 @@ public class PanelContratar extends javax.swing.JPanel {
         apellidoMaternoTF = new javax.swing.JTextField();
         cargoTF = new javax.swing.JTextField();
         rfcTF = new javax.swing.JTextField();
+        contrasenaL = new javax.swing.JLabel();
+        contrasenaTF = new javax.swing.JTextField();
+        matriculaL = new javax.swing.JLabel();
+        matriculaTF = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(1231, 449));
         setMinimumSize(new java.awt.Dimension(1231, 449));
@@ -128,6 +134,16 @@ public class PanelContratar extends javax.swing.JPanel {
 
         rfcTF.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
 
+        contrasenaL.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        contrasenaL.setText("Contraseña");
+
+        contrasenaTF.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+
+        matriculaL.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        matriculaL.setText("Apellido Materno");
+
+        matriculaTF.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,44 +151,49 @@ public class PanelContratar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(apellidoMaternoL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contratarB))
+                    .addComponent(contratarL)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contratarL)
+                            .addComponent(primerNombreL)
+                            .addComponent(segundoNombreL)
+                            .addComponent(apellidoPaternoL)
+                            .addComponent(matriculaL))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(apellidoPaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(primerNombreL)
-                                    .addComponent(segundoNombreL)
-                                    .addComponent(apellidoPaternoL))
-                                .addGap(55, 55, 55)
+                                    .addComponent(segundoNombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(primerNombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(87, 87, 87)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(apellidoPaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(segundoNombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(primerNombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(87, 87, 87)
+                                            .addComponent(cargoL)
+                                            .addComponent(rfcL))
+                                        .addGap(31, 31, 31)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rfcTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cargoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(fotoL)
+                                            .addComponent(contrasenaL))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(fotoL)
-                                                .addGap(50, 50, 50)
                                                 .addComponent(selectFotoB)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(archivoL))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cargoL)
-                                                    .addComponent(rfcL))
-                                                .addGap(31, 31, 31)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(rfcTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cargoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                                                .addGap(27, 27, 27)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(contratarB)
+                                                    .addComponent(contrasenaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                    .addComponent(apellidoMaternoL))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,30 +219,33 @@ public class PanelContratar extends javax.swing.JPanel {
                     .addComponent(selectFotoB)
                     .addComponent(archivoL)
                     .addComponent(apellidoPaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(apellidoMaternoL)
+                    .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contrasenaL)
+                    .addComponent(contrasenaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contratarB))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apellidoMaternoL)
-                            .addComponent(apellidoMaternoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(78, 78, 78))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(matriculaL))
+                    .addComponent(contratarB))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void contratarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarBActionPerformed
         this.le = DataLoader.loadEmployees(new File("EmployeeDatabase.bin"));
         if(primerNombreTF.getText().equals("") || apellidoPaternoTF.getText().equals("") || apellidoMaternoTF.getText().equals("") ||
-           rfcTF.getText().equals("") || cargoTF.getText().equals("")) {
+           rfcTF.getText().equals("") || cargoTF.getText().equals("") || matriculaTF.getText().equals("") || contrasenaTF.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Todos los espacios son obligatorios excepto Segundo Nombre y Foto");
         } else if(!cargoTF.getText().equals("Gerente") && !cargoTF.getText().equals("Empleado")) {
             JOptionPane.showMessageDialog(this, "Por el momento solo existen las posiciones de Empleado y Gerente. Por favor seleccione una de las mismas");
         } else {
             Empleado nuevoEmpleado = new Empleado(primerNombreTF.getText(), segundoNombreTF.getText(), apellidoPaternoTF.getText(),
-                                              apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), this.foto);
+                                                  apellidoMaternoTF.getText(), rfcTF.getText(), cargoTF.getText(), matriculaTF.getText(),
+                                                  contrasenaTF.getText(), this.foto);
             nuevoEmpleado.generaMatricula(le);
             this.le.contratar(nuevoEmpleado);
             this.le.almacenarEmpleados();
@@ -262,9 +286,13 @@ public class PanelContratar extends javax.swing.JPanel {
     private javax.swing.JLabel archivoL;
     private javax.swing.JLabel cargoL;
     private javax.swing.JTextField cargoTF;
+    private javax.swing.JLabel contrasenaL;
+    private javax.swing.JTextField contrasenaTF;
     private javax.swing.JButton contratarB;
     private javax.swing.JLabel contratarL;
     private javax.swing.JLabel fotoL;
+    private javax.swing.JLabel matriculaL;
+    private javax.swing.JTextField matriculaTF;
     private javax.swing.JLabel primerNombreL;
     private javax.swing.JTextField primerNombreTF;
     private javax.swing.JLabel rfcL;

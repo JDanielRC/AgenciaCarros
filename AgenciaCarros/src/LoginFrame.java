@@ -22,8 +22,8 @@ public class LoginFrame extends javax.swing.JFrame {
     private ListaEmpleados listaEmpleados;
     private DatosEmpresa da;
     
-    private ImageIcon adminLogo = new ImageIcon("isc.png");
-    private ImageIcon nullLogo = new ImageIcon("Null.png");
+    private ImageIcon adminLogo;
+    private ImageIcon nullLogo;
     
     public LoginFrame() {
         super("Login");
@@ -32,6 +32,8 @@ public class LoginFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.da = DataLoader.loadCompany(new File("CompanyInformation.bin"));
+        this.adminLogo = new ImageIcon("isc.png");
+        this.nullLogo = new ImageIcon("Null.png");
         
         //Settear logo, predeterminado o de la empresa
         try {
@@ -87,7 +89,6 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         logoL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoL.setText("Logo");
 
         matriculaL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         matriculaL.setText("Matrícula");
@@ -115,11 +116,12 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addComponent(contrasenaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
-                        .addComponent(accederB, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(logoL, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(125, 125, 125))
+                        .addComponent(accederB, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -22,15 +22,18 @@ public class PanelSettings extends javax.swing.JPanel {
 
     private ImageIcon logoNuevo;
     private DatosEmpresa da;
+    private MainFrame mf;
     
-    public PanelSettings() {
+    public PanelSettings(MainFrame mf) {
         initComponents();
-        this.da = new DatosEmpresa();
+        this.da = DataLoader.loadCompany(new File("CompanyInformation.bin"));
         this.logoNuevo = null;
+        this.mf = mf;
         this.llenarRecuadros();
     }
 
     private void llenarRecuadros() {
+        
         try {
             this.nombreEmpresaTF.setText(this.da.getNombre());
             this.archivoL.setText(this.da.getLogo().toString());
@@ -178,24 +181,21 @@ public class PanelSettings extends javax.swing.JPanel {
 
     private void editarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBActionPerformed
         DatosEmpresa nuevoDA = new DatosEmpresa(this.rfcTF.getText(), this.direccionTF.getText(), this.nombreEmpresaTF.getText(), this.logoNuevo);
-        System.out.println(nuevoDA.getNombre());
         
-        if(nuevoDA.equals(this.da)) {
+        if(this.nombreEmpresaTF.getText().equals(this.da.getNombre()) && this.direccionTF.getText().equals(this.da.getDireccion()) &&
+           rfcTF.getText().equals(this.da.getRFC()) && this.logoNuevo == this.da.getLogo()) {
             JOptionPane.showMessageDialog(this, "No se realizaron cambios a la información de la empresa");
         } else if(this.nombreEmpresaTF.getText().equals("") || this.direccionTF.getText().equals("") ||
            rfcTF.getText().equals("") || this.logoNuevo == null) {
             JOptionPane.showMessageDialog(this, "Todos los espacios son obligatorios");
         } else {
-            System.out.println(nuevoDA.getNombre());
-            String nombre = nombreEmpresaTF.getText();
-            
-            this.da.setNombre(nombre);
+            this.da.setNombre(nombreEmpresaTF.getText());
             this.da.setLogo(nuevoDA.getLogo());
             this.da.setDireccion(nuevoDA.getDireccion());
             this.da.setRFC(nuevoDA.getRFC());
             
             this.da.almacenarEmpresa();
-            
+
             JOptionPane.showMessageDialog(this, "La edición ha sido exitosa");
             this.da = DataLoader.loadCompany(new File("CompanyInformation.bin"));
         }

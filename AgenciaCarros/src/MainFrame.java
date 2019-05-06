@@ -20,13 +20,16 @@ import javax.swing.JRadioButton;
 
 public class MainFrame extends javax.swing.JFrame {
     
-    private ImageIcon adminLogo = new ImageIcon("isc.png");
-    private ImageIcon nullLogo = new ImageIcon("Null.png");
-    private CardLayout cardLayout = new CardLayout();
+    private ImageIcon adminLogo;
+    private ImageIcon nullLogo;
+    private CardLayout cardLayout;
     
     public MainFrame(String matricula) {
         super("Venta y compra de carros - " + matricula);
         initComponents();
+        this.adminLogo = new ImageIcon("isc.png");
+        this.nullLogo = new ImageIcon("Null.png");
+        this.cardLayout = new CardLayout();
 
         //this.setAlwaysOnTop(true);
         /*
@@ -42,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         //Crear paneles posibles
         PanelInventario pi = new PanelInventario();
         PanelEmpleados pe = new PanelEmpleados();
-        PanelSettings ps = new PanelSettings();
+        PanelSettings ps = new PanelSettings(this);
         PanelCompraVenta pcv = new PanelCompraVenta();
         
         //Asignar paneles al CardLayout
@@ -115,9 +118,8 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }  
         } 
-        
-        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
